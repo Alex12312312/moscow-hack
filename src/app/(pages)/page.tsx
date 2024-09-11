@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/Button";
+
 export default function Home() {
     return <>
-        It's main page
+        <Button />
     </>
 }

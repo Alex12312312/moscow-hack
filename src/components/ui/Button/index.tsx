@@ -94,19 +94,27 @@ type ButtonVariant =
   | "locked_val";
 
 interface IButton {
-  colorText: TailwindColorText;
-  variant: ButtonVariant;
+  colorText?: TailwindColorText;
+  variant?: ButtonVariant;
   htmlType?: "submit" | "reset" | "button";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   role?: string;
   disabled?: boolean;
   className?: string;
   typographyAttr?: ITypography;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Button = (props: IButton) => {
-  return <button className={`${variants({ [props.variant]: true })}`}>{props.children}</button>;
+  return (
+    <button
+      className={`${variants({ [props.variant as string]: true })} ${
+        props.colorText ?? "text-primary-600"
+      }`}
+    >
+      {props.children}
+    </button>
+  );
 };
 
 // export const Button: (props: IButton) => JSX.Element = ({
