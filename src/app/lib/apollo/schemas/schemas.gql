@@ -1,0 +1,17 @@
+scalar JSON
+
+type Query {
+    get(route: String!, qs: JSON): JSON
+}
+type Mutation {
+    post(route: String!, qs: JSON, body: JSON): JSON
+    patch(route: String!, qs: JSON, body: JSON): JSON
+    postSlice(route: String!, body: [Int]): JSON
+    put(route: String!, qs: JSON, body: JSON): JSON
+    delete(route: String!, qs: JSON): JSON
+}
+
+type Types {
+    Int: Int,
+    Float: Float
+}

@@ -12,15 +12,19 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "strictFunctionTypes": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "Components/*": ["./src/components/*"],
+      "Lib/*": ["./src/lib/*"],
+      "styles/*": ["./src/styles/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
