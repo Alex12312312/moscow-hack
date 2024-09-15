@@ -1,5 +1,7 @@
+import { Button } from "@/components/button/button";
+
 export default function Home() {
     return <>
-        It's main page
+        <Button className="md light-green" disabled={false}> Войти</Button>
     </>
 }
