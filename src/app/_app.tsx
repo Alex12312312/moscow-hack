@@ -1,11 +1,11 @@
-import App, {AppContext, AppProps} from "next/app";
-import RootLayout from "@/app/layout";
-import {useApollo} from "@/app/lib/apollo";
-import {useCookies} from "@/app/lib/hooks/useCookies";
-import {ApolloProvider} from "@apollo/client";
-import fp from "lodash/fp";
+import App, {AppContext, AppProps} from 'next/app';
+import RootLayout from '@/app/layout';
+import {useApollo} from '@/app/lib/apollo';
+import {useCookies} from '@/app/lib/hooks/useCookies';
+import {ApolloProvider} from '@apollo/client';
+import fp from 'lodash/fp';
 import {Provider} from 'react-redux'
-import {store} from "@/app/lib/store/store";
+import {store} from '@/app/lib/store/store';
 
 interface IAppProps extends AppProps {
     cookie: string
@@ -17,13 +17,13 @@ function RootApp({Component, pageProps, cookie, host}: IAppProps) {
     const client = useApollo(pageProps, cookies.get('access_token'));
 
     return <>
-        <Provider store={store}>
-            <ApolloProvider client={client}>
-                <RootLayout>
-                    <Component {...pageProps} />
-                </RootLayout>
-            </ApolloProvider>
-        </Provider>
+            <Provider store={store}>
+                <ApolloProvider client={client}>
+                    <RootLayout>
+                        <Component {...pageProps} />
+                    </RootLayout>
+                </ApolloProvider>
+            </Provider>
     </>
 }
 

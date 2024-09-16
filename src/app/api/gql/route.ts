@@ -1,12 +1,12 @@
 import {createSchema, createYoga, YogaInitialContext, YogaServerOptions} from 'graphql-yoga'
-import axios, {AxiosError, AxiosResponse} from "axios";
-import fp from "lodash/fp";
+import axios, {AxiosError, AxiosResponse} from 'axios';
+import fp from 'lodash/fp';
 
 import typeDefs from '@/app/lib/apollo/schemas/schemas.gql'
-import {GraphQLFloat, GraphQLInt} from "graphql";
-import * as https from "https";
-import {NextApiRequest, NextApiResponse} from "next";
-import {IExecutableSchemaDefinition} from "@graphql-tools/schema";
+import {GraphQLFloat, GraphQLInt} from 'graphql';
+import * as https from 'https';
+import {NextApiRequest, NextApiResponse} from 'next';
+import {IExecutableSchemaDefinition} from '@graphql-tools/schema';
 
 const baseParams = (pGetter: any, other: any) => ({
     baseURL: process.env.BASE_API_URL,
@@ -35,23 +35,23 @@ const baseErrorResolver = async (error: AxiosError) => {
             case 401:
                 return {
                     StatusCode: 401,
-                    Error: "Обновите токен"
+                    Error: 'Обновите токен'
                 }
             case 405:
                 console.log(error.response.request.method)
                 return {
                     StatusCode: 405,
-                    Error: "В схеме используется неправильный http-метод"
+                    Error: 'В схеме используется неправильный http-метод'
                 }
             case 415:
                 return {
                     StatusCode: 415,
-                    Error: "Похоже нет body, из-за этого yoga-graphql использует ContentType text/plain"
+                    Error: 'Похоже нет body, из-за этого yoga-graphql использует ContentType text/plain'
                 }
             case 400:
                 return {
                     StatusCode: 404,
-                    Error: "Ресурс не найден"
+                    Error: 'Ресурс не найден'
                 }
             case 500:
                 return {
@@ -68,7 +68,7 @@ const baseErrorResolver = async (error: AxiosError) => {
     console.log(error)
     return {
         StatusCode: 500,
-        Error: "unexpected error on front"
+        Error: 'unexpected error on front'
     }
 }
 
