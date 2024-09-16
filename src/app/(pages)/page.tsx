@@ -1,5 +1,5 @@
 'use client'
-import {PrimaryButton, RoundedSecondaryButton, SecondaryButton, TertiaryButton} from '@/components/ui/Button';
+import {Button} from '@/components/ui/Button';
 import {useState} from 'react';
 import {Typography} from 'Components/ui/Typography';
 import {signIn, signOut, useSession} from 'next-auth/react';
@@ -13,37 +13,48 @@ export default function Home() {
             <Typography size={'base1'} font={'regular'}>
                 {count}
             </Typography>
-            <PrimaryButton
+            <Button
                 className={'w-1/2'}
+                colorScheme={'primary'}
                 onClick={() => setCount(count + 1)}
                 leftIcon={<div>Left</div>}
                 rightIcon={<div>Right</div>}
             >
                 Primary
-            </PrimaryButton>
-            <SecondaryButton
+            </Button>
+            <Button
+                colorScheme={'secondary'}
                 className={'w-1/2'}
                 onClick={() => setCount(count + 1)}
                 leftIcon={<div>Left</div>}
                 rightIcon={<div>Right</div>}
             >
                 Secondary
-            </SecondaryButton>
-            <TertiaryButton
+            </Button>
+            <Button
+                colorScheme={'tertiary'}
                 className={'w-1/2'}
                 onClick={() => setCount(count + 1)}
                 leftIcon={<div>Left</div>}
                 rightIcon={<div>Right</div>}
             >
                 Tertiary
-            </TertiaryButton>
+            </Button>
 
-            <RoundedSecondaryButton onClick={() => signIn('google')}>
+            <Button
+                onClick={() => signIn('google')}
+                colorScheme={'secondary'}
+                roundingScheme={'custom'}
+            >
                 Sign In
-            </RoundedSecondaryButton>
-            <RoundedSecondaryButton onClick={() => signOut()}>
+            </Button>
+            <Button
+                onClick={() => signOut()}
+                colorScheme={'secondary'}
+                roundingScheme={'custom'}
+            >
                 Sign Out
-            </RoundedSecondaryButton>
+            </Button>
 
             {JSON.stringify(session)}
         </div>
