@@ -100,36 +100,3 @@ a {
         text-wrap: balance;
     }
 }
-
-@layer components{
-  .light-green{
-    background-color: rgba(21, 176, 151, 1);
-  }
-  .text-light-green{
-    color: rgba(21, 176, 151, 1);
-  }
-  button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 44px;
-    border-radius: 10px;
-  }
-
-  form{
-    border-radius: 10px;
-  }
-
-  button.sm{
-    height: 44px;
-  }
-
-  button.md{
-    width: 169px;
-  }
-
-  button.lg{
-    width: 368px;
-  }
-
-}
