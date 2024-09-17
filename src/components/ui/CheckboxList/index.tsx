@@ -16,7 +16,7 @@ export const CheckboxList = ({
         elements.push(<CheckBlock id={`cb-${i}`} text={titles[i]} className="mr-7 mt-3"></CheckBlock>)
     }
     }
-    return <div className="flex flex-col">
+    return <div className="flex flex-col mr-3 mt-3 ml-7">
         <div className="flex flex-row gap-2">
         <input type="checkbox" className="flex appearance-none after:content-['+'] checked:after:content-['-']" onChange={()=>{ChangeVisibility(!isOpen)}}></input>
         <Typography size="base3" font="medium">{titles[0]}</Typography>
