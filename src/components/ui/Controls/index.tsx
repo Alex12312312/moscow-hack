@@ -27,7 +27,7 @@ export const CheckBlock = ({
     return <div className="flex-row content-center justify-between gap-2">
         <Checkbox className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
-        <Typography>{text}</Typography>
+        <Typography size="base3" font="medium">{text}</Typography>
     </div>
 }
 
@@ -44,7 +44,7 @@ export const RadioBlock = ({
     return <div className="flex-row content-center justify-between gap-2">
         <Radiobutton className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
-        <Typography>{text}</Typography>
+        <Typography size="base3" font="medium">{text}</Typography>
     </div>
 }
 
@@ -61,6 +61,6 @@ export const ToggleBlock = ({
     return <div className="flex-row content-center justify-between gap-2">
         <Toggle className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
-        <Typography>{text}</Typography>
+        <Typography size="base3" font="medium">{text}</Typography>
     </div>
 }
