@@ -24,7 +24,7 @@ export const CheckBlock = ({
     disabled,
     text
 }:IBlock) =>{
-    return <div className="flex-row content-center justify-between gap-2">
+    return <div id={'block-' + id} className={"w-fit flex flex-row content-center justify-between gap-2 " + className}>
         <Checkbox className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
         <Typography size="base3" font="medium">{text}</Typography>
@@ -41,7 +41,7 @@ export const RadioBlock = ({
     disabled,
     text
 }:IBlock) =>{
-    return <div className="flex-row content-center justify-between gap-2">
+    return <div className={"w-auto flex flex-row content-center justify-between gap-2" + className}>
         <Radiobutton className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
         <Typography size="base3" font="medium">{text}</Typography>
@@ -58,7 +58,7 @@ export const ToggleBlock = ({
     disabled,
     text
 }:IBlock) =>{
-    return <div className="flex-row content-center justify-between gap-2">
+    return <div className={"w-auto flex flex-row content-center justify-between gap-2 " + className}>
         <Toggle className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}
         disabled={disabled}/>
         <Typography size="base3" font="medium">{text}</Typography>

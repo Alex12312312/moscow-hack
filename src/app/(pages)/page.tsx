@@ -6,11 +6,12 @@ import {signIn, signOut, useSession} from 'next-auth/react';
 import { Checkbox } from '@/components/ui/CheckBoxes';
 import { Radiobutton } from '@/components/ui/RadioButton';
 import { Toggle } from '@/components/ui/Toggle';
+import { CheckboxList } from '@/components/ui/CheckboxList';
 
 export default function Home() {
     const [count, setCount] = useState(0)
     const {data: session, status} = useSession()
-
+    let texts = ["text", "text", "text"];
     return <>
         <div className={'flex flex-col'}>
             <Typography size={'base1'} font={'regular'}>
@@ -51,6 +52,7 @@ export default function Home() {
             <Radiobutton name="1"></Radiobutton>
             <Radiobutton name="1"></Radiobutton>
             <Toggle></Toggle>
+            <CheckboxList titles={texts}></CheckboxList>
             {JSON.stringify(session)}
         </div>
     </>
