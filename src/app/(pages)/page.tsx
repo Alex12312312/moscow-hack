@@ -3,6 +3,9 @@ import {PrimaryButton, RoundedSecondaryButton, SecondaryButton, TertiaryButton} 
 import {useState} from 'react';
 import {Typography} from 'Components/ui/Typography';
 import {signIn, signOut, useSession} from 'next-auth/react';
+import { Checkbox } from '@/components/ui/CheckBoxes';
+import { Radiobutton } from '@/components/ui/RadioButton';
+import { Toggle } from '@/components/ui/Toggle';
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -44,7 +47,10 @@ export default function Home() {
             <RoundedSecondaryButton onClick={() => signOut()}>
                 Sign Out
             </RoundedSecondaryButton>
-
+            <Checkbox></Checkbox>
+            <Radiobutton name="1"></Radiobutton>
+            <Radiobutton name="1"></Radiobutton>
+            <Toggle></Toggle>
             {JSON.stringify(session)}
         </div>
     </>

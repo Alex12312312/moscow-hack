@@ -1,5 +1,9 @@
 'use client'
+
+import { Checkbox } from "@/components/ui/CheckBoxes"
+
 export default function LoginForm() {
-    return <>
-    HELLo</>
+    return<>
+    <Checkbox></Checkbox>
+    </>
 }
