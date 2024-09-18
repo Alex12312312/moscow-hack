@@ -1,7 +1,7 @@
 import {
     TailwindColorText,
 } from '@/lib/css';
-import {tv} from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import React from 'react';
 
 type TypographySize = `base${1 | 2 | 3 | 4}` | `h${1 | 2 | 3 | 4}`;

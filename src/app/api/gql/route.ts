@@ -1,12 +1,12 @@
-import {createSchema, createYoga, YogaInitialContext, YogaServerOptions} from 'graphql-yoga'
-import axios, {AxiosError, AxiosResponse} from 'axios';
+import { createSchema, createYoga, YogaInitialContext, YogaServerOptions } from 'graphql-yoga'
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import fp from 'lodash/fp';
 
 import typeDefs from '@/app/lib/apollo/schemas/schemas.gql'
-import {GraphQLFloat, GraphQLInt} from 'graphql';
+import { GraphQLFloat, GraphQLInt } from 'graphql';
 import * as https from 'https';
-import {NextApiRequest, NextApiResponse} from 'next';
-import {IExecutableSchemaDefinition} from '@graphql-tools/schema';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { IExecutableSchemaDefinition } from '@graphql-tools/schema';
 
 const baseParams = (pGetter: any, other: any) => ({
     baseURL: process.env.BASE_API_URL,
@@ -26,7 +26,7 @@ const fillParams = (route: string, params: Record<string, string>) => {
     return route
 }
 
-const httpsAgent = new https.Agent({rejectUnauthorized: false});
+const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 const baseErrorResolver = async (error: AxiosError) => {
     if (error.response) {
@@ -85,7 +85,7 @@ const resolvers = {
             const pGetter = (path: string) => fp.getOr('', path, params)
             return await axios.get(
                 fillParams(pGetter('1.route'), pGetter('1.qs')),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         }
@@ -96,7 +96,7 @@ const resolvers = {
 
             return await axios.post(
                 fillParams(pGetter('1.route'), pGetter('1.qs')), pGetter('1.body'),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         },
@@ -105,7 +105,7 @@ const resolvers = {
 
             return await axios.post(
                 fillParams(pGetter('1.route'), pGetter('1.qs')), pGetter('1.body'),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         },
@@ -114,7 +114,7 @@ const resolvers = {
 
             return await axios.put(
                 fillParams(pGetter('1.route'), pGetter('1.qs')), pGetter('1.body'),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         },
@@ -123,7 +123,7 @@ const resolvers = {
 
             return await axios.patch(
                 fillParams(pGetter('1.route'), pGetter('1.qs')), pGetter('1.body'),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         },
@@ -132,7 +132,7 @@ const resolvers = {
 
             return await axios.delete(
                 fillParams(pGetter('1.route'), pGetter('1.qs')),
-                baseParams(pGetter, {params: pGetter('1.qs')}))
+                baseParams(pGetter, { params: pGetter('1.qs') }))
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         }
@@ -156,9 +156,9 @@ const schema = createSchema(schemaDeclare)
 //         bodyParser: false,
 //     },
 // }
-const {handleRequest} = createYoga<YogaServerOptions<NextApiRequest, NextApiResponse>>({
+const { handleRequest } = createYoga<YogaServerOptions<NextApiRequest, NextApiResponse>>({
     schema,
     graphqlEndpoint: 'api/gql',
 });
 
-export {handleRequest as GET, handleRequest as POST, handleRequest as OPTIONS}
+export { handleRequest as GET, handleRequest as POST, handleRequest as OPTIONS }
