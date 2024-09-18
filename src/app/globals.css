@@ -11,6 +11,7 @@ html {
 
 body {
     max-width: 1920px;
+    background: var(--color-neutral-200);
 }
 
 a {

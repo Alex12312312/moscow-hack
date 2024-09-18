@@ -1,12 +1,15 @@
 'use client'
-import {Button} from '@/components/ui/Button';
-import {useState} from 'react';
-import {Typography} from 'Components/ui/Typography';
-import {signIn, signOut, useSession} from 'next-auth/react';
+import { Button } from '@/components/ui/Button';
+import { useState } from 'react';
+import { Typography } from 'Components/ui/Typography';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { Input } from 'Components/ui/Input';
+import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
 
 export default function Home() {
     const [count, setCount] = useState(0)
-    const {data: session, status} = useSession()
+    const [extraState, setExtraState] = useState<ExtraStatesType>('warn')
+    const { data: session, status } = useSession()
 
     return <>
         <div className={'flex flex-col'}>
@@ -44,19 +47,29 @@ export default function Home() {
             <Button
                 onClick={() => signIn('google')}
                 colorScheme={'secondary'}
-                roundingScheme={'custom'}
+                roundingScheme={'rounded'}
             >
                 Sign In
             </Button>
             <Button
                 onClick={() => signOut()}
                 colorScheme={'secondary'}
-                roundingScheme={'custom'}
+                roundingScheme={'rounded'}
             >
                 Sign Out
             </Button>
 
-            {JSON.stringify(session)}
+            <div className={'pl-8 w-1/2'}>
+                <Input
+                    leftIcon={<div/>}
+                    title={'Title'}
+                    subTitle={'subTitle'}
+                    placeholder={'placeholder'}
+                    extraState={extraState}
+                />
+            </div>
+            <Button onClick={() => setExtraState('success')}>change to success</Button>
+            {extraState}
         </div>
     </>
 }

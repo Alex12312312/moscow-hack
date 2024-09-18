@@ -1,4 +1,4 @@
-import {tv} from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 interface ColorScheme {
     primary: string;
@@ -14,29 +14,22 @@ interface PaddingScheme {
 
 interface RoundingScheme {
     default: string;
-    custom: string;
+    rounded: string;
 }
 
 interface TVProps {
-    background: ColorScheme;
-    textColor: ColorScheme;
+    colorScheme: ColorScheme;
     padding: PaddingScheme;
     rounding: RoundingScheme;
 }
 
 export const buttonVariants = tv<TVProps, any, any, any>({
     variants: {
-        background: {
-            primary: 'bg-accent-600 hover:bg-accent-700 focus:bg-accent-800',
-            secondary: 'bg-accent-100 hover:bg-accent-200 focus:bg-accent-300',
-            tertiary: 'bg-white hover:bg-neutral-200 focus:hover:bg-neutral-300',
-            disabled: 'bg-neutral-200',
-        },
-        textColor: {
-            primary: 'text-white',
-            secondary: 'text-accent-600',
-            tertiary: 'text-black',
-            disabled: 'text-neutral-400',
+        colorScheme: {
+            primary: 'bg-accent-600 hover:bg-accent-700 focus:bg-accent-800 text-white',
+            secondary: 'bg-accent-100 hover:bg-accent-200 focus:bg-accent-300 text-accent-600',
+            tertiary: 'bg-white hover:bg-neutral-200 focus:hover:bg-neutral-300 text-black',
+            disabled: 'bg-neutral-200 text-neutral-400',
         },
         padding: {
             default: 'pt-3 pb-3 pl-8 pr-8',
@@ -44,7 +37,7 @@ export const buttonVariants = tv<TVProps, any, any, any>({
         },
         rounding: {
             default: 'rounded-xl',
-            custom: 'rounded-full'
+            rounded: 'rounded-full'
         }
     }
 });

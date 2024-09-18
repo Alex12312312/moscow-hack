@@ -1,5 +1,5 @@
-import {ITypography, Typography} from '../Typography';
-import React, {ReactNode} from 'react';
+import { ITypography, Typography } from '../Typography';
+import React, { ReactNode } from 'react';
 import {
     buttonVariants,
     ColorSchemeType,
@@ -28,8 +28,7 @@ export const Button = (props: IButton) => {
             props.className,
             props.buttonVariantStyles,
             buttonVariants({
-                background: props.colorScheme ?? 'primary',
-                textColor: props.colorScheme ?? 'primary',
+                colorScheme: props.colorScheme ?? 'primary',
                 padding: props.paddingScheme ?? 'default',
                 rounding: props.roundingScheme ?? 'default'
             })
