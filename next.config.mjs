@@ -33,6 +33,15 @@ const withGQL = (nextConfig = {}) => {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'i06.fotocdn.net',
+                port: '',
+            },
+        ],
+    },
 }
 
 export default withGQL(nextConfig)

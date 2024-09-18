@@ -48,7 +48,6 @@ const authOptions: NextAuthOptions = {
                 return null;
             },
         }),
-        // TelegramProvider
     ],
     callbacks: {
         async signIn({ account, profile }) {

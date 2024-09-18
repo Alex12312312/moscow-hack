@@ -37,7 +37,7 @@ export const Slide = (props: ISlide) => {
                     </div>
                 </div>
             </div>
-            <div className={'flex flex-col'}>
+            <div className={'flex flex-col w-[80%]'}>
                 <div className={'bg-neutral-100 p-4 flex-col flex rounded-2xl'}>
                     <div className={'flex justify-between align-middle'}>
                         <Typography color={'text-dark-600'} font={'medium'} size={'base4'}>

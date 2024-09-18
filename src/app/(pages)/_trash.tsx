@@ -12,7 +12,7 @@ import { Link } from '@/components/ui/Link';
 import { Input } from 'Components/ui/Input';
 import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
 
-export default function Home() {
+export function NotHome() {
     const [count, setCount] = useState(0)
     const [extraState, setExtraState] = useState<ExtraStatesType>('warn')
     const { data: session, status } = useSession()
