@@ -12,7 +12,7 @@ export const MockedPhotoForEvent = (props: IMockedPhotoForEvent) => (
     <div className={'relative rounded-2xl w-[368px] h-[208px]'}>
         <Image
             className={'z-0 absolute rounded-2xl'}
-            src={img as string}
+            src={img as any}
             alt={'ast'}
             width={'368'}
             height={'208'}
@@ -21,7 +21,7 @@ export const MockedPhotoForEvent = (props: IMockedPhotoForEvent) => (
             {props.likeIcon}
         </div>
         <div className={'flex gap-[4px] absolute bottom-0 ml-2 mb-2'}>
-            {props.tags?.map(tag => <Tag color={tag.color} title={tag.title} />)}
+            {props.tags?.map((tag, index) => <Tag key={index} color={tag.color} title={tag.title} />)}
         </div>
     </div>
 )

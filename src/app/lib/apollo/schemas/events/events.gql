@@ -1,0 +1,5 @@
+query EVENTS {
+  get(
+    route: "/events"
+  )
+}
