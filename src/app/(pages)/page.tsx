@@ -1,8 +1,14 @@
 'use client'
-import { Button } from 'Components/ui/Button';
-import { useState } from 'react';
-import { Typography } from 'Components/ui/Typography';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import {useState} from 'react';
+import { Button } from '@/components/ui/Button';
+import {Typography} from 'Components/ui/Typography';
+import {signIn, signOut, useSession} from 'next-auth/react';
+import { Checkbox } from '@/components/ui/CheckBoxes';
+import { Radiobutton } from '@/components/ui/RadioButton';
+import { Toggle } from '@/components/ui/Toggle';
+import { CheckboxList } from '@/components/ui/CheckboxList';
+import { Divider } from '@/components/ui/Divider';
+import { Link } from '@/components/ui/Link';
 import { Input } from 'Components/ui/Input';
 import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
 
@@ -10,7 +16,7 @@ export default function Home() {
     const [count, setCount] = useState(0)
     const [extraState, setExtraState] = useState<ExtraStatesType>('warn')
     const { data: session, status } = useSession()
-
+    let texts = ["text", "text", "text"];
     return <>
         <div className={'flex flex-col'}>
             <Typography size={'base1'} font={'regular'}>
@@ -58,18 +64,14 @@ export default function Home() {
             >
                 Sign Out
             </Button>
-
-            <div className={'pl-8 w-1/2'}>
-                <Input
-                    leftIcon={<div/>}
-                    title={'Title'}
-                    subTitle={'subTitle'}
-                    placeholder={'placeholder'}
-                    extraState={extraState}
-                />
-            </div>
-            <Button onClick={() => setExtraState('success')}>change to success</Button>
-            {extraState}
+            <Checkbox></Checkbox>
+            <Radiobutton name="1"></Radiobutton>
+            <Radiobutton name="1"></Radiobutton>
+            <Toggle></Toggle>
+            <CheckboxList titles={texts}></CheckboxList>
+            <Divider width='174px'></Divider>
+            <Link text="link" path="/auth/login" disabled={false}></Link>
+            {JSON.stringify(session)}
         </div>
     </>
 }
