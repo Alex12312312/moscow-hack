@@ -1,11 +1,9 @@
 import App, { AppContext, AppProps } from 'next/app';
-import RootLayout from '@/app/layout';
-import { useApollo } from '@/app/lib/apollo';
-import { useCookies } from '@/app/lib/hooks/useCookies';
-import { ApolloProvider } from '@apollo/client';
+import { RootLayout } from '@/app/layout';
 import fp from 'lodash/fp';
 import { Provider } from 'react-redux'
 import { store } from '@/app/lib/store/store';
+import React from 'react';
 
 interface IAppProps extends AppProps {
     cookie: string
@@ -13,16 +11,11 @@ interface IAppProps extends AppProps {
 }
 
 function RootApp({ Component, pageProps, cookie, host }: IAppProps) {
-    const cookies = useCookies(cookie, host)
-    const client = useApollo(pageProps, cookies.get('access_token'));
-
     return <>
             <Provider store={store}>
-                <ApolloProvider client={client}>
-                    <RootLayout>
-                        <Component {...pageProps} />
-                    </RootLayout>
-                </ApolloProvider>
+                <RootLayout host={host} cookie={cookie}>
+                    <Component {...pageProps} />
+                </RootLayout>
             </Provider>
     </>
 }
@@ -31,8 +24,8 @@ RootApp.getInitialProps = async (appContext: AppContext) => {
     const appProps = await App.getInitialProps(appContext);
     return {
         ...appProps,
-        cookie: fp.get('ctx.req.headers.cookie', appContext),
-        host: fp.getOr('', 'ctx.req.headers.host', appContext).split(':')[0]
+        cookie: fp.get('ctx.req.headers.cookie', appContext) as string,
+        host: fp.getOr('', 'ctx.req.headers.host', appContext).split(':')[0] as string
     }
 }
 

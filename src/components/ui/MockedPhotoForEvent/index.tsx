@@ -21,7 +21,7 @@ export const MockedPhotoForEvent = (props: IMockedPhotoForEvent) => (
             {props.likeIcon}
         </div>
         <div className={'flex gap-[4px] absolute bottom-0 ml-2 mb-2'}>
-            {props.tags?.map(tag => <Tag color={tag.color} title={tag.title} />)}
+            {props.tags?.map((tag, index) => <Tag key={index} color={tag.color} title={tag.title} />)}
         </div>
     </div>
 )
