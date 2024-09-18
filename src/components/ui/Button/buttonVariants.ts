@@ -29,10 +29,11 @@ interface TVProps {
     justifying: JustifyScheme;
 }
 
-export const buttonVariants = tv<TVProps, any, any, any>({
+export const buttonVariants = tv<TVProps, any, any, any, string>({
+    base: 'disabled:bg-neutral-200 disabled:text-neutral-400',
     variants: {
         colorScheme: {
-            primary: 'bg-accent-600 hover:bg-accent-700 focus:bg-accent-800 text-white',
+            primary: 'bg-accent-600 hover:bg-accent-700 focus:bg-accent-800 text-white ',
             secondary: 'bg-accent-100 hover:bg-accent-200 focus:bg-accent-300 text-accent-600',
             tertiary: 'bg-white hover:bg-neutral-200 focus:hover:bg-neutral-300 text-black',
             disabled: 'bg-neutral-200 text-neutral-400',

@@ -1,5 +1,10 @@
 'use client'
-export default function Page() {
-    return <div>
-        HELLo</div>
+
+import { AuthModal } from '@/components/ui/AuthModal'
+import { useState } from 'react';
+
+export default function LoginForm() {
+    const [active, setActive] = useState(true);
+    return <AuthModal active={active} setActive={setActive}></AuthModal>
+    
 }
