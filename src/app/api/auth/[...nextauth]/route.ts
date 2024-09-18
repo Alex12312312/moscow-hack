@@ -18,8 +18,8 @@ const authOptions: NextAuthOptions = {
             clientSecret: GOOGLE_CLIENT_SECRET
         }),
         CredentialsProvider({
-            id: "telegram",
-            name: "Telegram",
+            id: 'telegram',
+            name: 'Telegram',
             credentials: {},
             async authorize(credentials, req) {
                 const validator = new AuthDataValidator({
@@ -41,7 +41,7 @@ const authOptions: NextAuthOptions = {
                     return {
                         id: user.id.toString(),
                         email: user.id.toString(),
-                        name: [user.first_name, user.last_name || ""].join(" "),
+                        name: [user.first_name, user.last_name || ''].join(' '),
                         image: user.photo_url,
                     };
                 }

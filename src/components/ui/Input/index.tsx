@@ -17,7 +17,7 @@ interface IInput {
 }
 
 export const Input = (props: IInput) => {
-    const getBorder = (extraState): string => {
+    const getBorder = (extraState: ExtraStatesType | undefined): string => {
         switch (extraState) {
             case 'error':
                 return 'border-error-200 focus:border-error-200 peer-focus:border-error-200 focus:outline-none '
@@ -30,7 +30,7 @@ export const Input = (props: IInput) => {
         }
     }
 
-    const getTextColor = (extraState): string => {
+    const getTextColor = (extraState: ExtraStatesType | undefined): string => {
         switch (extraState) {
             case 'error':
                 return 'text-error-200'
