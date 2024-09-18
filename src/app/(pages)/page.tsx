@@ -9,6 +9,10 @@ import { Toggle } from '@/components/ui/Toggle';
 import { CheckboxList } from '@/components/ui/CheckboxList';
 import { Divider } from '@/components/ui/Divider';
 import { Link } from '@/components/ui/Link';
+import { Badge } from '@/components/ui/Badges';
+import { BBadge } from '@/components/ui/BellBadge';
+import { CloseButton } from '@/components/ui/CloseButton';
+import { ProfilePhoto } from '@/components/ui/ProfilePhoto';
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -58,6 +62,12 @@ export default function Home() {
             <Divider width='174px'></Divider>
             <Link text="link" path="/auth/login" disabled={false}></Link>
             {JSON.stringify(session)}
+            <Badge status="default"></Badge>
+            <Badge status="warning"></Badge>
+            <Badge status="error"></Badge>
+            <BBadge num={12}></BBadge>
+            <CloseButton></CloseButton>
+            <ProfilePhoto url="https://i06.fotocdn.net/s205/94a92d5ade84ce23/public_pin_l/2362727257.jpg"></ProfilePhoto>
         </div>
     </>
 }
