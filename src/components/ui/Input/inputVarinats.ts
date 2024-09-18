@@ -31,11 +31,11 @@ export const inputVariants = tv<TVInputProps, any, any, any, string>({
     variants: {
         colorScheme: {
             white: 'border border-white custom-border bg-white transition-all duration-200' +
-                'hover:border-1 hover:border-solid hover:border-neutral-600 ' +
-                'focus:border-solid focus:border-1 peer-focus:border-1',
-            gray: 'border border-white bg-neutral-200 border-1 border-solid ' +
-                'hover:border-neutral-600 hover:border-solid hover:border-1 ' +
-                'focus:border-solid focus:border-1 peer-focus:border-1'
+                'hover:border-[1px] hover:border-solid hover:border-neutral-600 ' +
+                'focus:border-solid focus:border-[1px] peer-focus:border-[1px]',
+            gray: 'border border-white bg-neutral-200 border-[1px] border-solid ' +
+                'hover:border-neutral-600 hover:border-solid hover:border-[1px] ' +
+                'focus:border-solid focus:border-[1px] peer-focus:border-[1px]'
         },
         roundingScheme: {
             default: 'rounded-xl',
