@@ -11,6 +11,7 @@ import { Divider } from '@/components/ui/Divider';
 import { Link } from '@/components/ui/Link';
 import { Input } from 'Components/ui/Input';
 import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
+import { MiniPhoto } from '@/components/ui/MiniPhoto';
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -71,6 +72,7 @@ export default function Home() {
             <CheckboxList titles={texts}></CheckboxList>
             <Divider width='174px'></Divider>
             <Link text="link" path="/auth/login" disabled={false}></Link>
+            <MiniPhoto path="https://i06.fotocdn.net/s205/94a92d5ade84ce23/public_pin_l/2362727257.jpg"></MiniPhoto>
             {JSON.stringify(session)}
         </div>
     </>
