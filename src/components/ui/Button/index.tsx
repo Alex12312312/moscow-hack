@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import {
     buttonVariants,
     ColorSchemeType,
+    JustifySchemeType,
     PaddingSchemeType,
     RoundingSchemeType
 } from 'Components/ui/Button/buttonVariants';
@@ -13,6 +14,7 @@ interface IButton {
     colorScheme?: ColorSchemeType;
     roundingScheme?: RoundingSchemeType;
     paddingScheme?: PaddingSchemeType;
+    justifyingScheme?:JustifySchemeType;
     htmlType?: 'submit' | 'reset' | 'button';
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
@@ -30,7 +32,7 @@ export const Button = (props: IButton) => {
             buttonVariants({
                 colorScheme: props.colorScheme ?? 'primary',
                 padding: props.paddingScheme ?? 'default',
-                rounding: props.roundingScheme ?? 'default'
+                rounding: props.roundingScheme ?? 'default',
             })
         )}
         onClick={props.onClick}
@@ -40,7 +42,9 @@ export const Button = (props: IButton) => {
             size={props.typographyAttr?.size ?? 'base1'}
             font={props.typographyAttr?.font ?? 'regular'}
         >
-            <div className={'flex gap-[12px] justify-center'}>
+            <div className={`flex gap-[12px] ${buttonVariants({
+                justifying: props.justifyingScheme ?? 'default',
+            })}`}>
                 {props.leftIcon}
                 {props.children}
                 {props.rightIcon}

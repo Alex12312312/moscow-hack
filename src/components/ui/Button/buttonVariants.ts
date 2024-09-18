@@ -17,10 +17,16 @@ interface RoundingScheme {
     rounded: string;
 }
 
+interface JustifyScheme {
+    default: string;
+    start: string;
+}
+
 interface TVProps {
     colorScheme: ColorScheme;
     padding: PaddingScheme;
     rounding: RoundingScheme;
+    justifying: JustifyScheme;
 }
 
 export const buttonVariants = tv<TVProps, any, any, any>({
@@ -38,10 +44,15 @@ export const buttonVariants = tv<TVProps, any, any, any>({
         rounding: {
             default: 'rounded-xl',
             rounded: 'rounded-full'
-        }
+        },
+        justifying:{
+            default: 'justify-center',
+            start: 'justify-start'
+        },
     }
 });
 
 export type ColorSchemeType = keyof ColorScheme
 export type RoundingSchemeType = keyof RoundingScheme
 export type PaddingSchemeType = keyof PaddingScheme
+export type JustifySchemeType = keyof JustifyScheme
