@@ -1,11 +1,11 @@
-import React, { ReactNode, useCallback, useState } from "react"
-import { CloseButton } from "../CloseButton"
-import { Typography } from "../Typography"
-import { Modal } from "../Modal"
-import { Button } from "../Button"
-import { Divider } from "../Divider"
-import { Link } from "../Link"
-import { Progressbar } from "../Progressbar"
+import React, { ReactNode, useCallback, useState } from 'react'
+import { CloseButton } from '../CloseButton'
+import { Typography } from '../Typography'
+import { Modal } from '../Modal'
+import { Button } from '../Button'
+import { Divider } from '../Divider'
+import { Link } from '../Link'
+import { Progressbar } from '../Progressbar'
 
 interface IModal {
     active: boolean // стейт отображение модального окна
@@ -13,7 +13,7 @@ interface IModal {
     children?: ReactNode
 }
 
-export const AuthModal = ({active, setActive, children}:IModal) =>{
+export const AuthModal = ({ active, setActive, children }:IModal) =>{
     const handleActive = useCallback((state: boolean) => setActive(state), []);
     return <Modal active={active} setActive={handleActive}>
     <div className="flex flex-col m-4 gap-4">

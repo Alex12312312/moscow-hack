@@ -1,20 +1,20 @@
 'use client'
-import { Button } from "@/components/ui/Button";
-import { CheckBlock } from "@/components/ui/Controls";
-import { Input } from "@/components/ui/Input";
-import { Link } from "@/components/ui/Link";
-import { Typography } from "@/components/ui/Typography";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { Button } from '@/components/ui/Button';
+import { CheckBlock } from '@/components/ui/Controls';
+import { Input } from '@/components/ui/Input';
+import { Link } from '@/components/ui/Link';
+import { Typography } from '@/components/ui/Typography';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function RegForm(){
     const nav = useRouter();
     const [eulaAccepted, setEulaAccept] = useState(false);
     const [regCompleted, completeReg] = useState(false);
-    const [email, SetEmail] = useState("");
-    const [birthDate, SetBDate] = useState("");
-    const [fio, SetFio] = useState("");
-    const [password, setPass] = useState("");
+    const [email, SetEmail] = useState('');
+    const [birthDate, SetBDate] = useState('');
+    const [fio, SetFio] = useState('');
+    const [password, setPass] = useState('');
     const firstStage = () =>{
         return <>
         <div className="flex flex-row justify-start">
@@ -32,7 +32,7 @@ export default function RegForm(){
             </CheckBlock>
             <div className="flex justify-between">
                 <Button className="w-[49%]" colorScheme="secondary" onClick={() => {nav.back()}}>Назад</Button>
-                <Button className="w-[49%]" disabled={(!eulaAccepted && email == "")} onClick={() =>{
+                <Button className="w-[49%]" disabled={(!eulaAccepted && email == '')} onClick={() =>{
                     completeReg(true);
                 }}>Продолжить</Button>
             </div>
@@ -68,7 +68,7 @@ export default function RegForm(){
             <div className="flex gap-2 h-[20%] w-full">
                 <Button className="w-[49%]" colorScheme="secondary" onClick={() => {completeReg(false)}}>Назад</Button>
                 <Button className="w-[49%]" disabled={!eulaAccepted} onClick={() =>{
-                    nav.push("../");
+                    nav.push('../');
                 }}>Продолжить</Button>
             </div>
             <div className="flex gap-1">
