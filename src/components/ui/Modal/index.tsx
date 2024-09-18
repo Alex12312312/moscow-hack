@@ -3,7 +3,7 @@ import 'Components/ui/Modal/styles.css'
 
 interface IModal {
     active: boolean // стейт отображение модального окна
-    setActive: Dispatch<SetStateAction<boolean>>
+    setActive: (state:boolean) => void
     children: ReactNode
 }
 

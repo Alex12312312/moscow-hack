@@ -21,7 +21,7 @@ export default function Home() {
     const texts = ['text', 'text', 'text'];
 
     const [active, setActive] = useState(true);
-    const handleActive = useCallback((state) => setActive(state), []);
+    const handleActive = useCallback((state: boolean) => setActive(state), []);
 
     return <>
         <div className={'flex flex-col'}>
