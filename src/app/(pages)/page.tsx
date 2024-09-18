@@ -13,6 +13,8 @@ import { Input } from 'Components/ui/Input';
 import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
 import { Modal } from 'Components/ui/Modal';
 import { set } from 'lodash';
+import { CloseButton } from '@/components/ui/CloseButton';
+import { AuthModal } from '@/components/ui/AuthModal';
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -21,7 +23,7 @@ export default function Home() {
     const texts = ['text', 'text', 'text'];
 
     const [active, setActive] = useState(true);
-    const handleActive = useCallback((state) => setActive(state), []);
+    const handleActive = useCallback((state: boolean) => setActive(state), []);
 
     return <>
         <div className={'flex flex-col'}>
@@ -78,17 +80,10 @@ export default function Home() {
             <Divider width='174px'></Divider>
             <Link text="link" path="/auth/login" disabled={false}></Link>
             {JSON.stringify(session)}
-
-            <Modal active={active} setActive={handleActive}>
-                <Button>
-                    as
-                </Button>
-            </Modal>
-
             <Button onClick={() => handleActive(true)}>
                 as
             </Button>
-
+            <AuthModal active={active} setActive={setActive}></AuthModal>
         </div>
     </>
 }
