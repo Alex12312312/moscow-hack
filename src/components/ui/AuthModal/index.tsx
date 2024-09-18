@@ -5,6 +5,7 @@ import { Modal } from "../Modal"
 import { Button } from "../Button"
 import { Divider } from "../Divider"
 import { Link } from "../Link"
+import { Progressbar } from "../Progressbar"
 
 interface IModal {
     active: boolean // стейт отображение модального окна
@@ -17,11 +18,11 @@ export const AuthModal = ({active, setActive, children}:IModal) =>{
     return <Modal active={active} setActive={handleActive}>
     <div className="flex flex-col m-4 gap-4">
     <div className="flex flex-row justify-between align-top">
-    <Typography size="base2">Войти</Typography>
+    <Typography size="base2">Создать аккаунт</Typography>
     <CloseButton onClick={()=>handleActive(false)}>
     </CloseButton>
     </div>
-    <Typography size="base4" color="text-neutral-600">Вход позволит получить доступ к дополнительным функциям и уникальному опыту на сайте.</Typography>
+    <Typography size="base4" color="text-neutral-600">Чтобы создать аккаунт, вам потребуется специальный код. Вы можете отправить его себе на почту.</Typography>
     <Button colorScheme="secondary" justifyingScheme="start">Войти через Yandex</Button>
     <Button colorScheme="secondary" justifyingScheme="start">Войти через Вконтакте</Button>
     <Button colorScheme="secondary" justifyingScheme="start">Войти через Телеграмм</Button>
@@ -30,7 +31,7 @@ export const AuthModal = ({active, setActive, children}:IModal) =>{
     <Button>Войти по почте</Button>
     <div className="flex flex-row gap-1">
         <Typography size="base3">Нет аккаунта?</Typography>
-        <Link path="auth/reg" text="Создать аккаунт"></Link>
+        <Link path="./registration" text="Создать аккаунт"></Link>
     </div>
     </div>
     </Modal>

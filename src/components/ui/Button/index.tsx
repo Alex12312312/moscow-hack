@@ -22,6 +22,7 @@ interface IButton {
     leftIcon?: ReactNode;
     rightIcon?: ReactNode
     children?: ReactNode;
+    disabled?:boolean
 }
 
 export const Button = (props: IButton) => {
@@ -37,6 +38,7 @@ export const Button = (props: IButton) => {
         )}
         onClick={props.onClick}
         type={props.htmlType}
+        disabled={props.disabled}
     >
         <Typography
             size={props.typographyAttr?.size ?? 'base1'}
