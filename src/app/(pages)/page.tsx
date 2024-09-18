@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Typography } from 'Components/ui/Typography';
 import { signIn, signOut, useSession } from 'next-auth/react';
@@ -11,12 +11,18 @@ import { Divider } from '@/components/ui/Divider';
 import { Link } from '@/components/ui/Link';
 import { Input } from 'Components/ui/Input';
 import { ExtraStatesType } from 'Components/ui/Input/inputVarinats';
+import { Modal } from 'Components/ui/Modal';
+import { set } from 'lodash';
 
 export default function Home() {
     const [count, setCount] = useState(0)
     const [extraState, setExtraState] = useState<ExtraStatesType>('warn')
     const { data: session, status } = useSession()
     const texts = ['text', 'text', 'text'];
+
+    const [active, setActive] = useState(true);
+    const handleActive = useCallback((state) => setActive(state), []);
+
     return <>
         <div className={'flex flex-col'}>
             <Typography size={'base1'} font={'regular'}>
@@ -72,6 +78,17 @@ export default function Home() {
             <Divider width='174px'></Divider>
             <Link text="link" path="/auth/login" disabled={false}></Link>
             {JSON.stringify(session)}
+
+            <Modal active={active} setActive={handleActive}>
+                <Button>
+                    as
+                </Button>
+            </Modal>
+
+            <Button onClick={() => handleActive(true)}>
+                as
+            </Button>
+
         </div>
     </>
 }
