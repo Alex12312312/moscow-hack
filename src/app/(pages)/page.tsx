@@ -1,8 +1,8 @@
 'use client'
-import {useState} from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
-import {Typography} from 'Components/ui/Typography';
-import {signIn, signOut, useSession} from 'next-auth/react';
+import { Typography } from 'Components/ui/Typography';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { Checkbox } from '@/components/ui/CheckBoxes';
 import { Radiobutton } from '@/components/ui/RadioButton';
 import { Toggle } from '@/components/ui/Toggle';
@@ -16,7 +16,7 @@ export default function Home() {
     const [count, setCount] = useState(0)
     const [extraState, setExtraState] = useState<ExtraStatesType>('warn')
     const { data: session, status } = useSession()
-    let texts = ["text", "text", "text"];
+    const texts = ['text', 'text', 'text'];
     return <>
         <div className={'flex flex-col'}>
             <Typography size={'base1'} font={'regular'}>
