@@ -1,25 +1,11 @@
 'use client'
 
 import { EventCard } from 'Components/eventCard';
+import { Header } from 'Components/header';
 
 export default function Home() {
     return <>
-        {/*<EventCard imageUrl={''}*/}
-        {/*           title={'title'}*/}
-        {/*           date={'s'}*/}
-        {/*           place={'d'}*/}
-        {/*           status={'Завершен'}*/}
-        {/*           subTitle={'dsddsfdf'}*/}
-        {/*           userCount={123}*/}
-        {/*           time={'2'}*/}
-        {/*/>*/}
-        {/*<MockedPhotoForEvent*/}
-        {/*    likeIcon={<LikeIcon color={'black'}/>}*/}
-        {/*    tags={[*/}
-        {/*        { title: '0+', color: 'white' },*/}
-        {/*        { title: 'Tag', color: 'white'}*/}
-        {/*    ]}*/}
-        {/*/>*/}
+        <Header />
         <div className={'flex gap-[16px]'}>
             <EventCard
                 title={'Title'}
