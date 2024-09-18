@@ -32,7 +32,8 @@ export const Events = (props: IEvents) => {
         </Typography>
     }
 
-    const formatDate = (dateString) => {
+    const formatDate = (dateStringInput: string) => {
+        const dateString = dateStringInput.slice(0, 10)
         const months = [
             'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
             'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
@@ -44,11 +45,15 @@ export const Events = (props: IEvents) => {
         return `${parseInt(day, 10)} ${months[monthIndex]}`;
     }
 
-    const isPastDate = (dateTimeString) => {
+    const isPastDate = (dateTimeString: string) => {
         const inputDate = new Date(dateTimeString);
         const currentDate = new Date();
 
         return currentDate > inputDate;
+    }
+
+    const getTime = (inp: string) => {
+        return inp.slice(11, 19)
     }
 
     return <div className={'max-w-[100%]'}>
@@ -68,11 +73,11 @@ export const Events = (props: IEvents) => {
                             subTitle={event['description']}
                             status={isPastDate(event['startDate']) ? 'Завершено' : 'Участвуйте'}
                             place={event['location']}
-                            date={formatDate(event['startDate'].slice(0, 10))}
-                            time={event['startDate'].slice(11, 19)}
+                            date={formatDate(event['startDate'])}
+                            time={getTime(event['startDate'])}
                             userCount={event['participants']}
                             imageUrl={event['bannerUrl']}
-                            tags={event['tags'].map(tag => {
+                            tags={(event['tags'] as Array<any>).map(tag => {
                                 return {
                                     color: 'white',
                                     title: tag

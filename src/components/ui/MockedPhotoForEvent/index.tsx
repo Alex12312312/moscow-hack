@@ -12,7 +12,7 @@ export const MockedPhotoForEvent = (props: IMockedPhotoForEvent) => (
     <div className={'relative rounded-2xl w-[368px] h-[208px]'}>
         <Image
             className={'z-0 absolute rounded-2xl'}
-            src={img as string}
+            src={img as any}
             alt={'ast'}
             width={'368'}
             height={'208'}

@@ -47,11 +47,11 @@ export const EventCard = (props: IEventCard) => {
         }
     }
 
-    const declineParticipants = (number) => {
+    const declineParticipants = (number: number | undefined) => {
         const cases = [2, 0, 1, 1, 1, 2];
         const titles = ['участник', 'участника', 'участников'];
 
-        const index = (number % 100 > 4 && number % 100 < 20) ? 2 : cases[Math.min(number % 10, 5)];
+        const index = ((number ?? 0) % 100 > 4 && (number ?? 0) % 100 < 20) ? 2 : cases[Math.min((number ?? 0) % 10, 5)];
         return `${number} ${titles[index]}`;
     }
 

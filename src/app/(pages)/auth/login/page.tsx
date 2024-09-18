@@ -1,5 +1,5 @@
 'use client'
-export default function LoginForm() {
-    return <>
-    HELLo</>
+export default function Page() {
+    return <div>
+        HELLo</div>
 }

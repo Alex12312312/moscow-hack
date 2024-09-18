@@ -1,5 +1,5 @@
 import App, { AppContext, AppProps } from 'next/app';
-import { RootLayout } from '@/app/layout';
+import RootLayout from '@/app/layout';
 import fp from 'lodash/fp';
 import { Provider } from 'react-redux'
 import { store } from '@/app/lib/store/store';
@@ -10,10 +10,10 @@ interface IAppProps extends AppProps {
     host: string
 }
 
-function RootApp({ Component, pageProps, cookie, host }: IAppProps) {
+function RootApp({ Component, pageProps }: IAppProps) {
     return <>
             <Provider store={store}>
-                <RootLayout host={host} cookie={cookie}>
+                <RootLayout>
                     <Component {...pageProps} />
                 </RootLayout>
             </Provider>

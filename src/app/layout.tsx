@@ -18,11 +18,9 @@ export const metadata: Metadata = {
 
 interface IRootLayout {
     children: ReactNode
-    host: string
-    cookie: string
 }
 
-export default function RootLayout({ host, children, cookie }: IRootLayout) {
+export default function RootLayout({ children }: IRootLayout)  {
     return (
         <html>
         <head>
@@ -31,7 +29,7 @@ export default function RootLayout({ host, children, cookie }: IRootLayout) {
             <link rel="icon" href="./favicon.ico"/>
         </head>
         <body className={`${manrope.className} antialiased`}>
-        <Apollo cookie={cookie} host={host}>
+        <Apollo>
             <Providers>{children}</Providers>
         </Apollo>
         </body>
