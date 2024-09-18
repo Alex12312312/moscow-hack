@@ -7,6 +7,8 @@ import { Checkbox } from '@/components/ui/CheckBoxes';
 import { Radiobutton } from '@/components/ui/RadioButton';
 import { Toggle } from '@/components/ui/Toggle';
 import { CheckboxList } from '@/components/ui/CheckboxList';
+import { Divider } from '@/components/ui/Divider';
+import { Link } from '@/components/ui/Link';
 
 export default function Home() {
     const [count, setCount] = useState(0)
@@ -53,6 +55,8 @@ export default function Home() {
             <Radiobutton name="1"></Radiobutton>
             <Toggle></Toggle>
             <CheckboxList titles={texts}></CheckboxList>
+            <Divider width='174px'></Divider>
+            <Link text="link" path="/auth/login" disabled={false}></Link>
             {JSON.stringify(session)}
         </div>
     </>
