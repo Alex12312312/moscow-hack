@@ -14,6 +14,8 @@ interface IInput {
     extraState?: ExtraStatesType
     colorScheme?: ColorSchemeType
     roundingScheme?: RoundingSchemeType
+    className?: string
+    contentClassName?: string
 }
 
 export const Input = (props: IInput) => {
@@ -41,7 +43,7 @@ export const Input = (props: IInput) => {
         }
     }
 
-    return <div className={'flex flex-col'}>
+    return <div className={`'flex flex-col' ${props.contentClassName}`}>
         <div className={'flex'}>
             {props.title && <Typography font={'semibold'} size={'base4'}>
                 {props.title}
@@ -53,7 +55,7 @@ export const Input = (props: IInput) => {
             inputVariants({
                 colorScheme: props.colorScheme ?? 'white',
                 roundingScheme: props.roundingScheme ?? 'default'
-            }), getBorder(props.extraState))}/>
+            }), getBorder(props.extraState), props.className)}/>
         {props.subTitle && <Typography
             className={`mt-[8px] ${getTextColor(props.extraState)}`}
             font={'semibold'}

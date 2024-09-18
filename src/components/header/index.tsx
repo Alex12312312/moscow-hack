@@ -1,21 +1,44 @@
 import { Input } from 'Components/ui/Input';
+import { MockIcon } from 'Components/mockIcon';
+import { CoinsIcon, FavoritesIcon, NotificationsIcon } from 'Components/icons';
+import { Typography } from 'Components/ui/Typography';
 
 interface IHeaderIcons {
     isUser: boolean;
     coinsCount: number;
+    className?: string;
+}
+
+interface ICoinsHeaderIcon {
+    coins?: number
+}
+
+const CoinsHeaderIcon = (props: ICoinsHeaderIcon) => {
+    return <div className={'flex pl-3 pr-3 pt-3 align-middle mb-[5px] gap-[8px] border-[1px] rounded-full border-neutral-200 border-solid'}>
+        <CoinsIcon className={'translate-y-[0.5px]'} />
+        <Typography size={'base3'} font={'medium'} className={'translate-y-[0.5px]'}>
+            {props.coins}
+        </Typography>
+    </div>
 }
 
 export const HeaderIcons = (props: IHeaderIcons) => {
-    return <div>
-
+    return <div className={`flex gap-[16px] ${props.className}`}>
+        {/*{props.isUser ??*/}
+            <CoinsHeaderIcon coins={props.coinsCount} />
+    {/*}*/}
+        <FavoritesIcon />
+        <NotificationsIcon />
     </div>
 }
 export const Header = () => {
-    return <div className={'h-[116px] flex flex-col justify-center'}>
-        <div className={'grid grid-cols-[2fr_48px_10fr_48px_2fr]'}>
-            <div></div>
-            <Input leftIcon={<></>}/>
-            <HeaderIcons   coinsCount={1} isUser={true}/>
+    return <div className={'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[7%]'}>
+        <div className={'flex'}>
+            <Typography size={'h3'} color={'text-dark-600'} font={'bold'} className={'flex'} >
+                Береги афиша
+            </Typography>
+            <Input colorScheme={'gray'} contentClassName={'ml-[28%] w-[23%]'} placeholder={'🔍   Поиск...'} roundingScheme={'rounded'} leftIcon={<MockIcon/>}/>
+            <HeaderIcons coinsCount={123} className={'ml-[20.2%]'} isUser={true}/>
         </div>
     </div>
 }
