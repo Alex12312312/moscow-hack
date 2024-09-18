@@ -1,7 +1,7 @@
-import {setContext} from '@apollo/client/link/context';
-import {ApolloClient, createHttpLink, InMemoryCache, NormalizedCacheObject} from '@apollo/client';
-import {isEqual, merge} from 'lodash';
-import {useMemo} from 'react';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, createHttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
+import { isEqual, merge } from 'lodash';
+import { useMemo } from 'react';
 
 const httpLink = createHttpLink({
     uri: '/api/gql',
@@ -9,7 +9,7 @@ const httpLink = createHttpLink({
 });
 
 
-export const authLink = (token?: string | null) => setContext((_, {headers}) => {
+export const authLink = (token?: string | null) => setContext((_, { headers }) => {
     return ({
         headers: {
             ...headers,

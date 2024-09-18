@@ -90,9 +90,6 @@ const config = {
                 14: 'var(--padding-14x)',
                 15: 'var(--padding-15x)',
                 16: 'var(--padding-16x)',
-            },
-            backgroundImage:{
-                'vector' : "url('/images/Vector.svg')",
             }
         },
     }

@@ -11,6 +11,7 @@ html {
 
 body {
     max-width: 1920px;
+    background: var(--color-neutral-200);
 }
 
 a {
@@ -19,14 +20,14 @@ a {
 
 :root {
     /* accent */
-    --color-accent-100: #EBFFF1;
-    --color-accent-200: #D6FFE2;
-    --color-accent-300: #C2FFD4;
-    --color-accent-400: #ADFFC6;
-    --color-accent-500: #99FFB8;
-    --color-accent-600: #85FFAA;
-    --color-accent-700: #70FF9B;
-    --color-accent-800: #5CFF8D;
+    --color-accent-100: #EDFDFA;
+    --color-accent-200: #DAFBF5;
+    --color-accent-300: #C8F9F1;
+    --color-accent-400: #B6F6EC;
+    --color-accent-500: #18C9AB;
+    --color-accent-600: #15B097;
+    --color-accent-700: #13A48C;
+    --color-accent-800: #11927D;
 
     /* dark */
     --color-dark-100: #666666;
