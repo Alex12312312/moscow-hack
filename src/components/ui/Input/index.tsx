@@ -16,6 +16,7 @@ interface IInput {
     roundingScheme?: RoundingSchemeType
     className?: string
     contentClassName?: string
+    onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = (props: IInput) => {
@@ -50,7 +51,7 @@ export const Input = (props: IInput) => {
             </Typography>}
             {props.titleDescription && <InfoIcon/>}
         </div>
-        <input type={'text'} placeholder={props.placeholder} className={clsx(
+        <input onChange={props.onChanged} type={'text'} placeholder={props.placeholder} className={clsx(
             'text-neutral-600 hover:text-dark-700 focus:text-dark-700 peer-focus:text-dark-700',
             inputVariants({
                 colorScheme: props.colorScheme ?? 'white',
