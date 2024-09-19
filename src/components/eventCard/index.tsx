@@ -4,7 +4,6 @@ import { MockedPhotoForEvent } from 'Components/ui/MockedPhotoForEvent';
 import { CalendarIcon, DotIcon, LikeIcon, LocationIcon, TimerIcon } from 'Components/icons';
 import React from 'react';
 import { ITag, Tag } from 'Components/tag';
-import Image from 'next/image';
 import TO_FAVORITE from '@/app/lib/apollo/schemas/events/toFavourite.gql'
 import { DocumentNode, useMutation } from '@apollo/client';
 
@@ -43,13 +42,12 @@ export const EventCard = (props: IEventCard) => {
     const renderPhoto = () => {
         if (props.imageUrl != undefined && props.imageUrl.toLowerCase() != 'string') {
             const src = props.imageUrl
-            return <div className={'relative rounded-2xl overflow-hidden w-[368px] h-[208px]'} onClick={props.onClick}>
-                <Image
-                    className={'z-0 absolute rounded-2xl'}
-                    src={src}
+            return <div className={'relative rounded-2xl overflow-hidden min-w-[368px] w-full h-[208px]'} onClick={props.onClick}>
+                <img
+                    className={'z-0 absolute rounded-2xl w-full h-full inset-0 object-cover object-[30%_60%]'}
+                    src={src as any}
                     alt={'ast'}
-                    width={'368'}
-                    height={'208'}
+
                 />
                 <div className={'absolute right-0'}>
                     {<LikeIcon onClick={() => handleToLike(props.id!)} />}

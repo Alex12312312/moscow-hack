@@ -28,7 +28,14 @@ export default function LoginForm() {
                     код. Вы
                     можете отправить его себе на почту.</Typography>
                 <Button colorScheme="secondary" justifyingScheme="start">Войти через Yandex</Button>
-                <Button colorScheme="secondary" justifyingScheme="start">Войти через Вконтакте</Button>
+                <Button colorScheme="secondary" justifyingScheme="start" onClick={() => {
+                    signIn('google').then()
+                    nav.push('/', {
+
+                    })
+                }
+                }
+                >Войти через Google</Button>
                 <Button colorScheme="secondary" justifyingScheme="start">Войти через Телеграмм</Button>
                 <Button colorScheme="secondary" justifyingScheme="start">Войти через Мос.ру</Button>
                 <Divider></Divider>
@@ -51,7 +58,7 @@ export default function LoginForm() {
         signIn('myAuth', {
             ...data,
             redirect: false
-        }).then((r ) =>{
+        }).then((r) => {
             const res = r as {
                 status: number
             };
@@ -68,7 +75,7 @@ export default function LoginForm() {
     const fm = useForm({ resolver: yupResolver(loginForm) })
     const secondPage = () => <FormProvider {...fm}>
         <form className={'flex flex-col bg-white pt-[16px] rounded-2xl pl-4 pr-4 pb-5'}
-        onSubmit={fm.handleSubmit(data => handleSubmit(data))}>
+              onSubmit={fm.handleSubmit(data => handleSubmit(data))}>
             <div className={'flex justify-between'}>
                 <Typography size={'base2'} font={'medium'}>
                     Войти
@@ -102,7 +109,7 @@ export default function LoginForm() {
                 <CheckBlock name={'remember'}>
                     Запомнить меня
                 </CheckBlock>
-                <Link path={''} text={'Забыли пароль?'} />
+                <Link path={''} text={'Забыли пароль?'}/>
             </div>
             <div className={'mt-[16px] flex w-100 gap-[8px]'}>
                 <Button colorScheme={'secondary'} className={'w-[50%]'}>
@@ -119,7 +126,7 @@ export default function LoginForm() {
                 <Typography color={'text-dark-600'} font={'medium'} size={'base3'}>
                     Нет аккаунт?
                 </Typography>
-                <Link path={'auth/registration'} text={'Создать аккаунт'} />
+                <Link path={'auth/registration'} text={'Создать аккаунт'}/>
             </div>
         </form>
     </FormProvider>

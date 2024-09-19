@@ -1,0 +1,8 @@
+  query GetUser ($id: String) {
+    get(
+      route: "user/:id",
+      qs: {
+        id: $id
+      }
+    )
+  }

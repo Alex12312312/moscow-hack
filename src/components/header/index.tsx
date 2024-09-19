@@ -38,16 +38,17 @@ export const HeaderIcons = (props: IHeaderIcons) => {
 }
 export const Header = () => {
     const fm = useForm()
+    const {push} = useRouter()
     return <div className={'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[7%]'}>
         <div className={'flex'}>
-            <div className={'flex gap-[8px]'}>
+            <div className={'flex gap-[8px]'} onClick={() => push('/')}>
                 <Logo />
                 <Typography size={'h3'} color={'text-dark-600'} font={'bold'} className={'flex'}>
                     Береги афиша
                 </Typography>
             </div>
             <FormProvider {...fm}>
-                <Input name={'search'} colorScheme={'gray'} contentClassName={'ml-[25.5%] w-[23%]'}
+                <Input name={'search'} colorScheme={'gray'} contentClassName={'ml-[21.5%] w-[23%]'}
                        placeholder={'🔍   Поиск...'} roundingScheme={'rounded'} leftIcon={<MockIcon/>}/>
             </FormProvider>
             <HeaderIcons coinsCount={123} className={'ml-[20.2%]'} isUser={true}/>

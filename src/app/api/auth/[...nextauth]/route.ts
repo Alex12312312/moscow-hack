@@ -21,6 +21,7 @@ const authOptions: NextAuthOptions = {
             clientId: GOOGLE_CLIENT_ID,
             clientSecret: GOOGLE_CLIENT_SECRET
         }),
+        // YandexProvider
         CredentialsProvider({
             id: 'myAuth',
             name: 'myAuth',

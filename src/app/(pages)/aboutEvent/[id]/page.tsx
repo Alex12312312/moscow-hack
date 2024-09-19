@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import GetComments from '@/app/lib/apollo/schemas/events/commentsById.gql'
 import { DocumentNode, useQuery } from '@apollo/client';
+import { MockAvatar } from 'Components/mockAvatar';
 
 const instance = axios.create({
     baseURL: 'https://api.ecothon.quassbot.ru',
@@ -46,13 +47,12 @@ export default function EventPage({ params }: { params: { id: string } }) {
             <Slide>
                 <div className="flex flex-col rounded-2xl">
                     {isLoading ? <Loader/> : <div className="flex flex-col rounded-2xl justify-center">
-                        // @ts-ignore
                         <Image width={1136} height={360} className="w-[1136px] h-[360px] rounded-2xl"
 
-                               src={(eventInfo as {bannerUrl: string}).bannerUrl} alt={'image'}/>
+                               src={(eventInfo as { bannerUrl: string }).bannerUrl} alt={'image'}/>
                         <div className="absolute top-[380px] text-white left-[600px]">
                             <div className="flex flex-row">{tags}</div>
-                            <div className="text-2xl">{(eventInfo as {name: string}).name}</div>
+                            <div className="text-2xl">{(eventInfo as { name: string }).name}</div>
                             <div className="flex flex-row">
 
                             </div>
@@ -63,16 +63,18 @@ export default function EventPage({ params }: { params: { id: string } }) {
                                 <Typography className={'ml-[33%]'} size="base1" font={'semibold'}>О
                                     мероприятии</Typography>
                                 <Typography size="base3" font={'medium'}
-                                            className={'ml-[33%] mt-[16px]'}>{(eventInfo as {description: string}).description}</Typography>
+                                            className={'ml-[33%] mt-[16px]'}>{(eventInfo as {
+                                    description: string
+                                }).description}</Typography>
                             </div>
-                            <Reports id={params.id} />
+                            <Reports id={params.id}/>
 
                             <div className="h-[404px] w-[752px] ">
                                 <img src="https://www.ayda.ru/images/cities/perm/maps/perm-tourist-map.gif"
                                      className="object-cover"></img>
                             </div>
                             <div>
-                                {(eventInfo as {location: string}).location}
+                                {(eventInfo as { location: string }).location}
                             </div>
                         </div>
                     </div>}
@@ -87,7 +89,7 @@ interface IReport {
     id: string
 }
 
-const Reports = (props: IReport) => {
+export const Reports = (props: IReport) => {
     const [reports, setReport] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setErr] = useState(false)
@@ -107,14 +109,53 @@ const Reports = (props: IReport) => {
                 setErr(true)
             }
 
-            setLoading(false)
-            setReport(data['get']['Response'])
+            const reports = data['get']['Response'] as Array<{
+                id: string,
+                content: string,
+                rating: 5,
+                userId: string,
+                createdDate: string
+            }>
+
+            if (reports.length > 0) {
+                setReport([{
+                    ...(reports[0]),
+                    name: 'Иванов Иван Иванович',
+                }])
+            }
         },
         onError: error => console.log(error)
-    })
-    return <div>
-        {loading && <Loader />}
-        {error && err()}
-        {/*{reports.map(report => report.content)}*/}
-    </div>
+    });
+    return <>
+         {loading && <Loader/>}
+         {error && err()}
+    </>
+    //     <div className={'flex flex-col gap-[24px]'}>
+    //         <Typography size={'h2'} className={'mt-[48px]'}>Отзывы</Typography>
+    //         {(reports as Array<{
+    //             id: string,
+    //             content: string,
+    //             rating: 5,
+    //             userId: string,
+    //             createdDate: string,
+    //             name: string
+    //         }>).map(report => <div className={'flex flex-col'} key={report.id}>
+    //             <div className={'flex gap-[16px]'}>
+    //                 <MockAvatar onClick={() => {
+    //                 }}/>
+    //                 <div className={'flex flex-col justify-between'}>
+    //                     <Typography font={'medium'} size={'base3'}>
+    //                         {report.name}
+    //                     </Typography>
+    //                     <Typography size={'base4'} font={'regular'}>
+    //                         {report.createdDate}
+    //                     </Typography>
+    //                 </div>
+    //             </div>
+    //             <Typography className={} size={'base3'} font={'regular'}>
+    //                 {report.content}
+    //             </Typography>
+    //         </div>)}
+    //     </div>
+    // </>
 }

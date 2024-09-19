@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ITypography, Typography } from 'Components/ui/Typography';
 import { CalendarLiteIcon, CalendarStar, CloseIcon, NewsIcon, ShoppingIcon } from 'Components/icons';
 import { Button } from 'Components/ui/Button';
+import { signOut } from 'next-auth/react';
 
 interface ISlide {
     children?: ReactNode
@@ -55,6 +56,7 @@ export const Slide = (props: ISlide) => {
                 </div>
                 <div></div>
             </div>
+            <Button className={'-translate-x-5'} colorScheme={'secondary'} onClick={() => signOut()}>Выйти</Button>
         </div>
         {props.children}
     </div>
