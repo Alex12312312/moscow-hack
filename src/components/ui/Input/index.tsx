@@ -20,6 +20,7 @@ interface IInput {
     className?: string
     contentClassName?: string
     type?: string
+    value?: string
     onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -57,7 +58,7 @@ export const Input = (props: IInput) => {
             {props.titleDescription && <InfoIcon/>}
         </div>
         {/* @ts-ignore */}
-        <input onChange={props.onChanged} type={props.type ?? 'text'} placeholder={props.placeholder} className={clsx(
+        <input onChange={props.onChanged} value={props.value} type={props.type ?? 'text'} placeholder={props.placeholder} className={clsx(
             'text-neutral-600 hover:text-dark-700 focus:text-dark-700 peer-focus:text-dark-700',
             inputVariants({
                 colorScheme: props.colorScheme ?? 'white',

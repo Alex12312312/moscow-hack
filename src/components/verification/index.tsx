@@ -7,9 +7,49 @@ import { useState } from 'react';
 import { Button } from 'Components/ui/Button';
 import { Header } from 'Components/header';
 import { Slide } from 'Components/slide';
+import axios from 'axios';
+import { getCookies } from 'cookies-next';
 
 export const VerificationComponent = () => {
     const scheme = yup.object().shape({})
+
+    const [state, setState] = useState<{
+        'ИНН': string,
+        'ОГРН': string,
+        'НаимСокрЮЛ': string,
+        'НаимПолнЮЛ': string,
+        'ДатаОГРН': string,
+        'Статус': string,
+        'АдресПолн': string,
+        'ОснВидДеят': string,
+        'ГдеНайдено': string
+    }>({
+        АдресПолн: '',
+        ГдеНайдено: '',
+        ДатаОГРН: '',
+        ИНН: '',
+        НаимПолнЮЛ: '',
+        НаимСокрЮЛ: '',
+        ОГРН: '',
+        ОснВидДеят: '',
+        Статус: ''
+    })
+
+
+    const handle = (inn) => {
+        const tk = getCookies({
+            path: 'access_token'
+        })
+        console.log(tk)
+        axios.get(`https://api.ecothon.quassbot.ru/document/${inn}/external`, {
+            headers: {
+                'Authorization': `Bearer ${tk}`
+            }
+        }).then(r => {
+            setState(r.data['ЮЛ'])
+            console.log(r.data)
+        }).catch((e) => console.log(e))
+    }
 
     const fm = useForm({ resolver: yupResolver(scheme) })
 
@@ -28,18 +68,23 @@ export const VerificationComponent = () => {
                     </Typography>
 
                     <FormProvider {...fm}>
-                        <form className={'mt-[32px] flex-col flex gap-[32px] w-[50%]'}>
+                        <form className={'mt-[32px] flex-col flex gap-[32px] w-[50%]'}
+                              onSubmit={fm.handleSubmit(data => {
+                                  console.log(data)
+                                  handle('7714379242')
+                              })}>
                             <Input
-                                className={'w-full'}
+                                className={'w-full text-dark-600'}
                                 name={'INN'}
                                 colorScheme={'gray'}
                                 title={'ИНН'}
                                 placeholder={'Введите ИНН'}
                                 leftIcon={<></>}
                             />
-                            <Button>Загрузить из реестра</Button>
+                            <Button htmlType={'submit'}>Загрузить из реестра</Button>
                             <Input
-                                className={'w-full'}
+                                value={state == {} ? '' : state['ОГРН']}
+                                className={'w-full text-dark-600'}
                                 name={'ORGN'}
                                 colorScheme={'gray'}
                                 title={'ОРГН'}
@@ -47,7 +92,8 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                className={'w-full'}
+                                value={state == {} ? '' : state['НаимСокрЮЛ']}
+                                className={'w-full text-dark-600'}
                                 name={'name'}
                                 colorScheme={'gray'}
                                 title={'Название организации'}
@@ -55,7 +101,8 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                className={'w-full'}
+                                value={state == {} ? '' : state['АдресПолн']}
+                                className={'w-full text-dark-600'}
                                 name={'Location'}
                                 colorScheme={'gray'}
                                 title={'Адрес'}
@@ -63,7 +110,7 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                className={'w-full'}
+                                className={'w-full text-dark-600'}
                                 name={'email'}
                                 colorScheme={'gray'}
                                 title={'Почта организации'}
@@ -72,7 +119,7 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                className={'w-full'}
+                                className={'w-full text-dark-600'}
                                 name={'code'}
                                 colorScheme={'gray'}
                                 title={'Код деятельности'}
