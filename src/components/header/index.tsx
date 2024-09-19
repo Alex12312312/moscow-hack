@@ -30,9 +30,7 @@ export const HeaderIcons = (props: IHeaderIcons) => {
     const nav = useRouter()
 
     return <div className={`flex gap-[16px] ${props.className}`}>
-        {/*{props.isUser ??*/}
         <CoinsHeaderIcon coins={props.coinsCount}/>
-        {/*}*/}
         <FavoritesIcon/>
         <NotificationsIcon/>
         <MockAvatar onClick={() => nav.push('/profile')} />

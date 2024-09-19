@@ -40,6 +40,26 @@ const nextConfig = {
                 hostname: 'i06.fotocdn.net',
                 port: '',
             },
+            {
+                protocol: 'https',
+                hostname: 'images.adsttc.com',
+                port: ''
+            },
+            {
+                protocol: 'https',
+                hostname: 'avatars.mds.yandex.net',
+                port: ''
+            },
+            {
+                protocol: 'https',
+                hostname: 'bigtrip.by',
+                port: ''
+            },
+            {
+                protocol: 'https',
+                hostname: 's3.timeweb.cloud',
+                port: ''
+            }
         ],
     },
 }

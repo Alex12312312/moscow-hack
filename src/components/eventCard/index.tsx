@@ -20,7 +20,7 @@ interface IEventCard {
     status?: string
     tags?: Array<ITag>
     className?: string;
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+    onClick?: any;
 }
 
 export const EventCard = (props: IEventCard) => {

@@ -74,11 +74,6 @@ export const Events = (props: IEvents) => {
         return inp.slice(11, 19);
     };
 
-    const handleOnClick = (id: string) => {
-        let select = (events.filter((item) => item['id'] == id))[0];
-        setSelected(select);
-    }
-
     return <div className={'max-w-[100%]'}>
         <Header/>
         <Slide>
