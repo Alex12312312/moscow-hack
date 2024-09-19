@@ -7,14 +7,21 @@ import { useState } from 'react';
 import { EventCard } from 'Components/eventCard';
 import { Loader } from 'Components/ui/Loader';
 import './style.css'
+import { Modal } from '../ui/Modal';
+import { CalendarIcon, DotIcon, LocationIcon, TimerIcon } from '../icons';
+import { useRouter } from 'next/navigation';
 
 interface IEvents {
     title?: string
 }
 
+
 export const Events = (props: IEvents) => {
+    const nav = useRouter();
     const [events, setEvents] = useState([])
     const [error, setError] = useState(false)
+    const [isbVisible, setSbVis] = useState(false)
+    const [selected, setSelected] = useState();
     const { loading } = useQuery(EVENTS as DocumentNode, {
         onCompleted: data => {
             setEvents(data['get']['Response']['data'])
@@ -56,6 +63,11 @@ export const Events = (props: IEvents) => {
         return inp.slice(11, 19)
     }
 
+    const handleOnClick = (id: string) => {
+        let select = (events.filter((item) => item['id'] == id))[0];
+        setSelected(select);
+    }
+
     return <div className={'max-w-[100%]'}>
         <Header/>
         <Slide>
@@ -67,6 +79,8 @@ export const Events = (props: IEvents) => {
                 <div className={'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar'}>
                     {!loading ? events.map(event =>
                         <EventCard
+                            onClick={()=>{nav.push(`/aboutEvent/${event['id']}`)
+                            }}
                             key={event['id']}
                             className={'flex-shrink-0'}
                             title={event['name']}
@@ -83,6 +97,7 @@ export const Events = (props: IEvents) => {
                                     title: tag
                                 }
                             })}
+                            
                         />) : <Loader/>}
                 </div>
                 <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
