@@ -4,8 +4,11 @@ import { InfoIcon } from 'Components/icons';
 import { ColorSchemeType, ExtraStatesType, inputVariants } from 'Components/ui/Input/inputVarinats';
 import clsx from 'clsx';
 import { RoundingSchemeType } from 'Components/ui/Button/buttonVariants';
+import { useFormContext } from 'react-hook-form';
+import fp from 'lodash/fp';
 
 interface IInput {
+    name: string
     leftIcon: ReactNode
     title?: string
     subTitle?: string
@@ -16,10 +19,12 @@ interface IInput {
     roundingScheme?: RoundingSchemeType
     className?: string
     contentClassName?: string
+    type?: string
     onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = (props: IInput) => {
+    const { register, formState } = useFormContext();
     const getBorder = (extraState: ExtraStatesType | undefined): string => {
         switch (extraState) {
             case 'error':
@@ -51,12 +56,13 @@ export const Input = (props: IInput) => {
             </Typography>}
             {props.titleDescription && <InfoIcon/>}
         </div>
-        <input onChange={props.onChanged} type={'text'} placeholder={props.placeholder} className={clsx(
+        {/* @ts-ignore */}
+        <input onChange={props.onChanged} type={props.type ?? 'text'} placeholder={props.placeholder} className={clsx(
             'text-neutral-600 hover:text-dark-700 focus:text-dark-700 peer-focus:text-dark-700',
             inputVariants({
                 colorScheme: props.colorScheme ?? 'white',
                 roundingScheme: props.roundingScheme ?? 'default'
-            }), getBorder(props.extraState), props.className)}/>
+            }), getBorder(props.extraState), props.className)} {...register(props.name)}/>
         {props.subTitle && <Typography
             className={`mt-[8px] ${getTextColor(props.extraState)}`}
             font={'semibold'}
@@ -64,5 +70,11 @@ export const Input = (props: IInput) => {
         >
             {props.subTitle}
         </Typography>}
+        <Typography color={'text-error-200'}>
+            <>
+                {fp.getOr('', `errors.${props.name}.message`, formState)}
+                {fp.has(`errors.${props.name}.message`, formState)}
+            </>
+        </Typography>
     </div>
 }

@@ -8,6 +8,7 @@ export type BannerProps = {
   description: string;
   backgroundImage?: string;
 
+  // @ts-ignore
   onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   buttonText: string;
 };
