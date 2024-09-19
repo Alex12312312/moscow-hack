@@ -5,6 +5,8 @@ import { Slide } from 'Components/slide';
 import { Typography } from 'Components/ui/Typography';
 import img from 'assets/avatar.png';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/Badges';
+import { ProfilePhoto } from '@/components/ui/ProfilePhoto';
 
 const PageProfile = () => {
   return (
@@ -13,19 +15,20 @@ const PageProfile = () => {
       <div className="flex flex-col rounded-2xl">
         <Slide>
           <div>
-            <div className="navProfile flex gap-6 ml-[48px] mt-[32px]">
+            <div className="navProfile flex gap-6 ml-[48px] mt-[32px] m-8">
               <Typography font='bold' size="base3"><span className="p-[8px] border-b-[#15B097] border-b-[2px]">Профиль</span></Typography>
               <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Ачивки</span></Typography>
               <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Семена</span></Typography>
               <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Настройки</span></Typography>
             </div>
             <div className='flex'>
-              <div className='userImage'>
+              <div className=''>
+                <ProfilePhoto url={}></ProfilePhoto>
                 <Image className='w-[176px] h-[176px]' src={img as any} alt="avatar"/>
               </div>
-              <div className='userInfo flex gap-[8px] content-center'>
-                <Typography font="bold" size="base1">Иванов Иван Иванович</Typography>
-                <div className='circleOnline rounded-[50%] w-[8px] h-[8px] bg-[#4ACC4A]'></div>
+              <div className='justify-center content-center flex gap-[8px] content-center'>
+                <Typography className='ml-2' font="bold" size="base1">Иванов Иван Иванович</Typography>
+                <Badge className='relative top-2' status="default"></Badge>
               </div>
             </div>
           </div>
