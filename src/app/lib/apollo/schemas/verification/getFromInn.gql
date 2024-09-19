@@ -1,0 +1,8 @@
+query GetComments ($id: String) {
+  get(
+    route: "document/:id/external",
+    qs: {
+      id: $id
+    }
+  )
+}
