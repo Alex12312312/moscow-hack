@@ -54,7 +54,7 @@ export const Header = () => {
   return (
     <div
       className={
-        'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[2%] w-full'
+        'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[4%] w-full'
       }
     >
       <div className={'flex w-full'}>
