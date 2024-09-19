@@ -56,6 +56,7 @@ export const Input = (props: IInput) => {
             </Typography>}
             {props.titleDescription && <InfoIcon/>}
         </div>
+        {/* @ts-ignore */}
         <input onChange={props.onChanged} type={props.type ?? 'text'} placeholder={props.placeholder} className={clsx(
             'text-neutral-600 hover:text-dark-700 focus:text-dark-700 peer-focus:text-dark-700',
             inputVariants({

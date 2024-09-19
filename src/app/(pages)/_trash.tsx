@@ -64,7 +64,7 @@ export function NotHome() {
             >
                 Sign Out
             </Button>
-            <Checkbox></Checkbox>
+            <Checkbox name={'1'}></Checkbox>
             <Radiobutton name="1"></Radiobutton>
             <Radiobutton name="1"></Radiobutton>
             <Toggle></Toggle>

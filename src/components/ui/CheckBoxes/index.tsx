@@ -1,28 +1,28 @@
-import { register } from 'next/dist/client/components/react-dev-overlay/pages/client';
 import { useFormContext } from 'react-hook-form';
 
-interface ICheckbox{
-    className?:string;
-    checked?:boolean;
-    name:string;
-    id?:string;
+interface ICheckbox {
+    className?: string;
+    checked?: boolean;
+    name: string;
+    id?: string;
     onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string;
     disabled?: boolean;
 }
 
 export const Checkbox = ({
-    className,
-    checked,
-    name,
-    id,
-    onChanged,
-    value,
-    disabled,
-}:ICheckbox) => {
-    const {register, formState} = useFormContext()
-    return <input id={id} name={name} {...register(name)} type="checkbox" value={value} checked={checked} onChange={onChanged}
-    className="w-[20px] h-[20px] border rounded appearance-none flex justify-center content-center cursor-pointer
+                             className,
+                             checked,
+                             name,
+                             id,
+                             onChanged,
+                             value,
+                             disabled,
+                         }: ICheckbox) => {
+    const { register, formState } = useFormContext()
+    return <input id={id} {...register(name)} type="checkbox" value={value} checked={checked}
+                  onChange={onChanged}
+                  className="w-[20px] h-[20px] border rounded appearance-none flex justify-center content-center cursor-pointer
     default:border-[#EBEBEB] 
     hover:border-[#292929]
     checked:border-accent-600 checked:after:bg-accent-600 checked: text-white
@@ -30,5 +30,5 @@ export const Checkbox = ({
     checked:after:content-['✓']
     disabled:bg-[#EBEBEB] disabled:border-[#EBEBEB]
     disabled:after:content-['✓']"
-    disabled={disabled} />
+                  disabled={disabled}/>
 }

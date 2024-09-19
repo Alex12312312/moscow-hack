@@ -46,7 +46,7 @@ export default function LoginForm() {
         password: yup.string().min(8, 'Пароль должен содержать минимум 8 символов')
     });
 
-    const handleSubmit = (data) => {
+    const handleSubmit = (data: any) => {
         setError('')
         signIn('myAuth', {
             ...data,

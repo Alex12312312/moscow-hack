@@ -16,11 +16,10 @@ interface IModal {
     children?: ReactNode
 }
 
-export const AuthModal = ({ active, setActive, children }: IModal) => {
-    const handleActive = useCallback((state: boolean) => setActive(state), []);
+export const AuthModal = () => {
     const [emailRegistration, setEmailRegistration] = useState(false)
     const firstPage = () => {
-        return <div active={active} setActive={handleActive}>
+        return <div>
             <div className="flex flex-col m-4 gap-4">
                 <div className="flex flex-row justify-between align-top">
                     <Typography size="base2">Создать аккаунт</Typography>

@@ -46,6 +46,7 @@ const authOptions: NextAuthOptions = {
                     }
                 })
 
+                // @ts-ignore
                 const responseUserMe = innerRes as {
                     id: string,
                     email: string,

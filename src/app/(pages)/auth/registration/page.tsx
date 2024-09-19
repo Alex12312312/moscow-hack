@@ -42,7 +42,7 @@ export default function RegForm() {
         }
     });
 
-    const handleSubmit = (data) => {
+    const handleSubmit = (data: any) => {
         setError('')
         if (data!.password != data!.passwordRepeat) {
             setError('Пароли должны совпадать')
