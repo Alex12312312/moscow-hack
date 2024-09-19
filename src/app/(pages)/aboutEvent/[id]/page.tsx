@@ -73,8 +73,13 @@ export default function EventPage({ params }: { params: { id: string } }) {
                                 <img src="https://www.ayda.ru/images/cities/perm/maps/perm-tourist-map.gif"
                                      className="object-cover"></img>
                             </div>
-                            <div>
+                            <div className='flex flex-col'>
+                              <div>
                                 {(eventInfo as { location: string }).location}
+                              </div>
+                              <div>
+                                Email для связи: {(eventInfo as { location: string }).location}
+                              </div>
                             </div>
                         </div>
                     </div>}

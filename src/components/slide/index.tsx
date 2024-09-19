@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ITypography, Typography } from 'Components/ui/Typography';
-import { CalendarLiteIcon, CalendarStar, CloseIcon, NewsIcon, ShoppingIcon } from 'Components/icons';
+import { CalendarLiteIcon, CalendarStar, CloseIcon, Exit, NewsIcon, ShoppingIcon } from 'Components/icons';
 import { Button } from 'Components/ui/Button';
 import { signOut } from 'next-auth/react';
 
@@ -47,16 +47,19 @@ export const Slide = (props: ISlide) => {
                         </Typography>
                         <CloseIcon/>
                     </div>
+                    <div className={'flex justify-between align-middle'}></div>
                     <Button className={'mt-[16px]'} typographyAttr={{
                         font: 'medium',
                         size: 'base4',
                     } as ITypography}>
-                        Верифиццироваться
+                        Верифицироваться
                     </Button>
                 </div>
                 <div></div>
             </div>
-            <Button className={'-translate-x-5'} colorScheme={'secondary'} onClick={() => signOut()}>Выйти</Button>
+            <button className={'pt-[12px] pb-[12px] pl-[16px] gap-[12px] flex hover:bg-neutral-100 w-[224px] h-[44px] mb-64'} onClick={() => signOut()}>
+                <Exit/> <Typography className='ml-3' color={'text-neutral-600'} font={'medium'} size={'base3'}>Выйти</Typography>
+            </button>
         </div>
         {props.children}
     </div>
