@@ -6,7 +6,10 @@ import EVENTS from '@/app/lib/apollo/schemas/events/events.gql';
 import { useState } from 'react';
 import { EventCard } from 'Components/eventCard';
 import { Loader } from 'Components/ui/Loader';
-import './style.css';
+import './style.css'
+import { Modal } from '../ui/Modal';
+import { CalendarIcon, DotIcon, LocationIcon, TimerIcon } from '../icons';
+import { useRouter } from 'next/navigation';
 import { Banner } from '../banner';
 import { Achievement } from '../achievement';
 
@@ -14,9 +17,13 @@ interface IEvents {
     title?: string;
 }
 
+
 export const Events = (props: IEvents) => {
-    const [events, setEvents] = useState([]);
-    const [error, setError] = useState(false);
+    const nav = useRouter();
+    const [events, setEvents] = useState([])
+    const [error, setError] = useState(false)
+    const [isbVisible, setSbVis] = useState(false)
+    const [selected, setSelected] = useState();
     const { loading } = useQuery(EVENTS as DocumentNode, {
         onCompleted: (data) => {
             setEvents(data['get']['Response']['data']);
@@ -67,62 +74,58 @@ export const Events = (props: IEvents) => {
         return inp.slice(11, 19);
     };
 
-    return (
-        <div className={'max-w-[100%]'}>
-            <Header/>
-            <Slide>
-                <div className={'flex-col flex max-w-[100%] overflow-hidden'}>
-                    <Banner
-                        title="Дерево за дерево!"
-                        description="Привяжи телеграм к аккаунту, ходи на ивенты и получай виртуальные семена, меняй их на настоящие и сажай! За каждое полученное виртуальное семя нами будет посажано одно настоящее."
-                        buttonText="Подробнее"
-                        onClick={() => alert('test')}
-                    />
-                    <div className="mb-8"></div>
-                    <Achievement title="Бибуля" description="asda"/>
-                    <div className="mb-8"></div>
-                    <Typography size={'h2'} font={'semibold'}>
-                        {props.title}
-                    </Typography>
-                    {error ?? renderError()}
-                    <div
-                        className={
-                            'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar'
-                        }
-                    >
-                        {!loading ? (
-                            events.map((event) => (
-                                <EventCard
-                                    id={event['id']}
-                                    key={event['id']}
-                                    className={'flex-shrink-0'}
-                                    title={event['name']}
-                                    subTitle={event['description']}
-                                    status={
-                                        isPastDate(event['startDate']) ? 'Завершено' : 'Участвуйте'
-                                    }
-                                    place={event['location']}
-                                    date={formatDate(event['startDate'])}
-                                    time={getTime(event['startDate'])}
-                                    userCount={event['participants']}
-                                    imageUrl={event['bannerUrl']}
-                                    tags={(event['tags'] as Array<any>).map((tag) => {
-                                        return {
-                                            color: 'white',
-                                            title: tag,
-                                        };
-                                    })}
-                                />
-                            ))
-                        ) : (
-                            <Loader/>
-                        )}
-                    </div>
-                    <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
-                        Мероприятия
-                    </Typography>
+    const handleOnClick = (id: string) => {
+        let select = (events.filter((item) => item['id'] == id))[0];
+        setSelected(select);
+    }
+
+    return <div className={'max-w-[100%]'}>
+        <Header/>
+        <Slide>
+            <div className={'flex-col flex max-w-[100%] overflow-hidden'}>
+                <Banner
+                    title="Дерево за дерево!"
+                    description="Привяжи телеграм к аккаунту, ходи на ивенты и получай виртуальные семена, меняй их на настоящие и сажай! За каждое полученное виртуальное семя нами будет посажано одно настоящее."
+                    buttonText="Подробнее"
+                    onClick={() => alert('test')}
+                />
+                <div className="mb-8"></div>
+                <Achievement title="Бибуля" description="asda"/>
+                <div className="mb-8"></div>
+                <Typography size={'h2'} font={'semibold'}>
+                    {props.title}
+                </Typography>
+                {error ?? renderError()}
+                {loading && <Loader />}
+                <div className={'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar'}>
+                    {events.map(event =>
+                        <EventCard
+                            id={event['id']}
+                            onClick={()=>{nav.push(`/aboutEvent/${event['id']}`)
+                            }}
+                            key={event['id']}
+                            className={'flex-shrink-0'}
+                            title={event['name']}
+                            subTitle={event['description']}
+                            status={isPastDate(event['startDate']) ? 'Завершено' : 'Участвуйте'}
+                            place={event['location']}
+                            date={formatDate(event['startDate'])}
+                            time={getTime(event['startDate'])}
+                            userCount={event['participants']}
+                            imageUrl={event['bannerUrl']}
+                            tags={(event['tags'] as Array<any>).map(tag => {
+                                return {
+                                    color: 'white',
+                                    title: tag
+                                }
+                            })}
+
+                        />)}
                 </div>
-            </Slide>
-        </div>
-    );
-};
+                <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
+                    Мероприятия
+                </Typography>
+            </div>
+        </Slide>
+    </div>
+}

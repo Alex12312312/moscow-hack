@@ -19,7 +19,8 @@ interface IEventCard {
     userCount?: number
     status?: string
     tags?: Array<ITag>
-    className?: string
+    className?: string;
+    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 export const EventCard = (props: IEventCard) => {
@@ -42,7 +43,7 @@ export const EventCard = (props: IEventCard) => {
     const renderPhoto = () => {
         if (props.imageUrl != undefined && props.imageUrl.toLowerCase() != 'string') {
             const src = props.imageUrl
-            return <div className={'relative rounded-2xl overflow-hidden w-[368px] h-[208px]'}>
+            return <div className={'relative rounded-2xl overflow-hidden w-[368px] h-[208px]'} onClick={props.onClick}>
                 <Image
                     className={'z-0 absolute rounded-2xl'}
                     src={src}
