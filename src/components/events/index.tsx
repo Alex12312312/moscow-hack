@@ -88,7 +88,7 @@ export const Events = (props: IEvents) => {
           <Achievement
             title="Новичок природы"
             description="Первые шаги к осознанному отношению к природе!"
-            tooltip='Посетите свое первое мероприятие'
+            tooltip="Посетите свое первое мероприятие"
           />
           <div className="mb-8"></div>
           <Typography size={'h2'} font={'semibold'}>
@@ -128,9 +128,87 @@ export const Events = (props: IEvents) => {
               />
             ))}
           </div>
+
           <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
-            Мероприятия
+            Избранное
           </Typography>
+
+          {error ?? renderError()}
+          {loading && <Loader />}
+          <div
+            className={
+              'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar'
+            }
+          >
+            {events.map((event) => (
+              <EventCard
+                id={event['id']}
+                onClick={() => {
+                  nav.push(`/aboutEvent/${event['id']}`);
+                }}
+                key={event['id']}
+                className={'flex-shrink-0'}
+                title={event['name']}
+                subTitle={event['description']}
+                status={
+                  isPastDate(event['startDate']) ? 'Завершено' : 'Участвуйте'
+                }
+                place={event['location']}
+                date={formatDate(event['startDate'])}
+                time={getTime(event['startDate'])}
+                userCount={event['participants']}
+                imageUrl={event['bannerUrl']}
+                tags={(event['tags'] as Array<any>).map((tag) => {
+                  return {
+                    color: 'white',
+                    title: tag,
+                  };
+                })}
+              />
+            ))}
+          </div>
+
+          <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
+            Участие
+          </Typography>
+
+          {error ?? renderError()}
+          {loading && <Loader />}
+          <div
+            className={
+              'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar mb-16'
+            }
+          >
+            // TODO: fix
+            {events.map((event, index) =>
+              index > 2 ? (
+                <EventCard
+                  id={event['id']}
+                  onClick={() => {
+                    nav.push(`/aboutEvent/${event['id']}`);
+                  }}
+                  key={event['id']}
+                  className={'flex-shrink-0'}
+                  title={event['name']}
+                  subTitle={event['description']}
+                  status={
+                    isPastDate(event['startDate']) ? 'Завершено' : 'Участвуйте'
+                  }
+                  place={event['location']}
+                  date={formatDate(event['startDate'])}
+                  time={getTime(event['startDate'])}
+                  userCount={event['participants']}
+                  imageUrl={event['bannerUrl']}
+                  tags={(event['tags'] as Array<any>).map((tag) => {
+                    return {
+                      color: 'white',
+                      title: tag,
+                    };
+                  })}
+                />
+              ) : undefined,
+            )}
+          </div>
         </div>
       </Slide>
     </div>
