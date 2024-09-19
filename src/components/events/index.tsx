@@ -8,6 +8,7 @@ import { EventCard } from 'Components/eventCard';
 import { Loader } from 'Components/ui/Loader';
 import './style.css';
 import { Banner } from '../banner';
+import { Achievement } from '../achievement';
 
 interface IEvents {
   title?: string;
@@ -73,11 +74,13 @@ export const Events = (props: IEvents) => {
         <div className={'flex-col flex max-w-[100%] overflow-hidden'}>
           <Banner
             title="Дерево за дерево!"
-            description="Привяжи телеграм к аккаунту, ходи на ивенты и получай вертуальные семена, меняй их на настоящие и сажай! За каждое полученное виртуальное семя нами будет посажано одно настоящее."
+            description="Привяжи телеграм к аккаунту, ходи на ивенты и получай виртуальные семена, меняй их на настоящие и сажай! За каждое полученное виртуальное семя нами будет посажано одно настоящее."
             buttonText="Подробнее"
             onClick={() => alert('test')}
           />
-          <div className='mb-8'></div>
+          <div className="mb-8"></div>
+          <Achievement title="Бибуля" description='asda'/>
+          <div className="mb-8"></div>
           <Typography size={'h2'} font={'semibold'}>
             {props.title}
           </Typography>
