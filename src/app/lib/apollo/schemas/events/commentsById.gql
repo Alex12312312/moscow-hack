@@ -1,0 +1,8 @@
+query GetComments ($id: String) {
+  get(
+    route: "events/:id/comments",
+    qs: {
+      id: $id
+    }
+  )
+}
