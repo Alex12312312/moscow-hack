@@ -57,7 +57,7 @@ export const Slide = (props: ISlide) => {
                 </div>
                 <div></div>
             </div>
-            <button className={'pt-[12px] pb-[12px] pl-[16px] gap-[12px] flex hover:bg-neutral-100 w-[224px] h-[44px] mb-64'} onClick={() => signOut()}>
+            <button className={'pt-[12px] pb-[12px] pl-[16px] gap-[12px] flex hover:bg-neutral-100 w-[224px] h-[44px] mb-36 mr-4'} onClick={() => signOut()}>
                 <Exit/> <Typography className='ml-3' color={'text-neutral-600'} font={'medium'} size={'base3'}>Выйти</Typography>
             </button>
         </div>
