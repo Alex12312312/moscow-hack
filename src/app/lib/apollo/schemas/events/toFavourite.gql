@@ -1,0 +1,8 @@
+mutation TO_FAVORITE ($id: String) {
+  post(
+    route: "/events/:id/favorite"
+    qs: {
+      id: $id
+    }
+  )
+}

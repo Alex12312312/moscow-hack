@@ -160,3 +160,21 @@ export const CloseIcon = () => {
     </svg>
 
 }
+export const Logo = () => {
+    return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_449_1180)">
+            <path fillRule="evenodd" clipRule="evenodd"
+                  d="M12 24C18.6272 24 24 18.6277 24 12V0C11.5735 0 1.50008 10.7451 1.50008 24H3.00015C3.00015 22.7143 3.08859 21.4521 3.25874 20.2213C5.44728 22.5475 8.55433 24 12 24Z"
+                  fill="#15B097"/>
+            <path fillRule="evenodd" clipRule="evenodd"
+                  d="M1.05734 16.9329C4.07427 7.12757 13.2045 0 23.9994 0H11.9994C5.37227 0 -0.000549316 5.37226 -0.000549316 12C-0.000549316 13.7581 0.377826 15.4283 1.05678 16.9329H1.05734Z"
+                  fill="#15B097"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_449_1180">
+                <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+    </svg>
+
+}
