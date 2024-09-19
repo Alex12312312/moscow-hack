@@ -1,0 +1,38 @@
+'use client'
+import React from 'react';
+import { Header } from 'Components/header';
+import { Slide } from 'Components/slide';
+import { Typography } from 'Components/ui/Typography';
+import img from 'assets/avatar.png';
+import Image from 'next/image';
+
+const PageProfile = () => {
+  return (
+    <div className="">
+      <Header />
+      <div className="flex flex-col rounded-2xl">
+        <Slide>
+          <div>
+            <div className="navProfile flex gap-6 ml-[48px] mt-[32px]">
+              <Typography font='bold' size="base3"><span className="p-[8px] border-b-[#15B097] border-b-[2px]">Профиль</span></Typography>
+              <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Ачивки</span></Typography>
+              <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Семена</span></Typography>
+              <Typography font='bold' size="base3"><span className="p-[8px] text-[#C2C2C2]">Настройки</span></Typography>
+            </div>
+            <div className='flex'>
+              <div className='userImage'>
+                <Image className='w-[176px] h-[176px]' src={img as any} alt="avatar"/>
+              </div>
+              <div className='userInfo flex gap-[8px] content-center'>
+                <Typography font="bold" size="base1">Иванов Иван Иванович</Typography>
+                <div className='circleOnline rounded-[50%] w-[8px] h-[8px] bg-[#4ACC4A]'></div>
+              </div>
+            </div>
+          </div>
+        </Slide>
+      </div>
+    </div>
+  );
+};
+
+export default PageProfile;
