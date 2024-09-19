@@ -36,7 +36,7 @@ export const VerificationComponent = () => {
     })
 
 
-    const handle = (inn) => {
+    const handle = (inn: string) => {
         const tk = getCookies({
             path: 'access_token'
         })
@@ -83,7 +83,7 @@ export const VerificationComponent = () => {
                             />
                             <Button htmlType={'submit'}>Загрузить из реестра</Button>
                             <Input
-                                value={state == {} ? '' : state['ОГРН']}
+                                value={state['ОГРН']}
                                 className={'w-full text-dark-600'}
                                 name={'ORGN'}
                                 colorScheme={'gray'}
@@ -92,7 +92,7 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                value={state == {} ? '' : state['НаимСокрЮЛ']}
+                                value={state['НаимСокрЮЛ']}
                                 className={'w-full text-dark-600'}
                                 name={'name'}
                                 colorScheme={'gray'}
@@ -101,7 +101,7 @@ export const VerificationComponent = () => {
                                 leftIcon={<></>}
                             />
                             <Input
-                                value={state == {} ? '' : state['АдресПолн']}
+                                value={state['АдресПолн']}
                                 className={'w-full text-dark-600'}
                                 name={'Location'}
                                 colorScheme={'gray'}
@@ -145,7 +145,7 @@ export const VerificationComponent = () => {
 function FileUpload() {
     const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = (event: any) => {
         setSelectedFile(event.target.files[0]);
     };
 
