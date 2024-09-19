@@ -20,37 +20,37 @@ const StorePage = () => {
             <Typography font="bold" className="mb-[32px]">Магазин</Typography>
             <div className="flex flex-wrap gap-4 gap-y-[48px] w-[1317px]">
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore1 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore1 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">200
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Толстовка</Typography>
               </div>
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore2 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore2 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">50
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Шоппер</Typography>
               </div>
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore3 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore3 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">150
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Футболка женская</Typography>
               </div>
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore4 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore4 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">100
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Бейсболка</Typography>
               </div>
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore5 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore5 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">120
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Шапочка</Typography>
               </div>
               <div className="merchCard">
-                <Image className="w-[272px] h-[272px]" src={imgStore6 as any} />
+                <Image alt={''} className="w-[272px] h-[272px]" src={imgStore6 as any} />
                 <Typography color={'text-accent-500'} font="bold" className="mt-[12px]" size="base2">150
                   монет</Typography>
                 <Typography className="mt-[4px]" font="semibold" size="base4">Футболка мужская</Typography>
