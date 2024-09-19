@@ -19,7 +19,7 @@ export const Slide = (props: ISlide) => {
 
   return (
     <div className={'flex ml-[6.25%]'}>
-      <div className={'w-[15.6%] flex flex-col justify-between'}>
+      <div className={'w-[15.6%] flex flex-col justify-start'}>
         <div className={'flex flex-col gap-[8px] pr-[12px] justify-between'}>
           <div>
             <div
@@ -80,12 +80,11 @@ export const Slide = (props: ISlide) => {
             </div>
           </div>
         </div>
-        <div className={'flex flex-col w-[80%]'}>
+        <div className={'-mt-[150%] flex flex-col w-[80%] justify-start'}>
           <div
             className={
               'bg-neutral-100 p-4 flex-col flex rounded-2xl mt-[356px]'
             }
-            //style={{ display: hidden ? 'none' : 'inherit' }}
           >
             <div className={'flex justify-between align-middle'}>
               <Typography
@@ -113,13 +112,13 @@ export const Slide = (props: ISlide) => {
           </div>
           <div></div>
         </div>
-        <Button
+        {/* <Button
           className={'-translate-x-5'}
           colorScheme={'secondary'}
           onClick={() => signOut()}
         >
           Выйти
-        </Button>
+        </Button> */}
       </div>
       {props.children}
     </div>
