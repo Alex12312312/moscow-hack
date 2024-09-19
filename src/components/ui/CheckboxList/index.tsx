@@ -13,7 +13,8 @@ export const CheckboxList = ({
     const elements = [];
     if(titles.length > 2){
     for(let i = 1; i < titles.length; i++){
-        elements.push(<CheckBlock id={`cb-${i}`} text={titles[i]} className="mr-7 mt-3"></CheckBlock>)
+        // @ts-ignore
+        elements.push(<CheckBlock id={`cb-${i}`} text={titles[i]} className="mr-7 mt-3" name={'name'}><></></CheckBlock>)
     }
     }
     return <div className="flex flex-col mr-3 mt-3 ml-7">
