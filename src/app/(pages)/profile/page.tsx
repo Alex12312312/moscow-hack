@@ -23,12 +23,12 @@ const PageProfile = () => {
             </div>
             <div className='flex'>
               <div className=''>
-                <ProfilePhoto url={}></ProfilePhoto>
-                <Image className='w-[176px] h-[176px]' src={img as any} alt="avatar"/>
+                {/*<ProfilePhoto url={img as string} onClick={() => {}}></ProfilePhoto>*/}
+                <Image className='w-[44px] h-[44px] rounded-full' src={img as any} alt="avatar"/>
               </div>
-              <div className='justify-center content-center flex gap-[8px] content-center'>
-                <Typography className='ml-2' font="bold" size="base1">Иванов Иван Иванович</Typography>
-                <Badge className='relative top-2' status="default"></Badge>
+              <div className='justify-center flex gap-[8px] align-middle content-center'>
+                <Typography className='ml-2 mt-[10px]' font="bold" size="base1">Иванов Иван Иванович</Typography>
+                <Badge className='relative top-2 mt-[10px]' status="default"></Badge>
               </div>
             </div>
           </div>
