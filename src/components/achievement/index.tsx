@@ -4,7 +4,7 @@ import { Typography } from '../ui/Typography';
 
 export type AchievementProps = {
   progress?: number;
-
+  tooltip?: string;
   title: string;
   description?: string;
 };
@@ -16,7 +16,7 @@ export function Achievement(props: AchievementProps) {
     <>
       <div className="flex flex-row p-4 rounded-2xl gap-4 bg-neutral-100 w-[94%]">
         <div className="h-20 w-20 bg-white rounded-xl justify-center items-center select-none flex">
-          <LikeIcon color="black" />
+          <LikeIcon color="#53c340" />
         </div>
 
         <div className="flex flex-col justify-between w-full">
@@ -28,7 +28,10 @@ export function Achievement(props: AchievementProps) {
             >
               {props.title}
             </Typography>
-            <div className="translate-x-0.5 translate-y-0.5">
+            <div
+              className="translate-x-0.5 translate-y-0.5"
+              title={props.tooltip}
+            >
               <InfoIcon color="#C2C2C2" />
             </div>
           </div>
