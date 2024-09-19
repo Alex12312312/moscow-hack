@@ -179,7 +179,6 @@ export const Events = (props: IEvents) => {
               'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar mb-16'
             }
           >
-            { // TODO: fix }
             {events.map((event, index) =>
               index > 2 ? (
                 <EventCard
