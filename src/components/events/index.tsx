@@ -96,8 +96,9 @@ export const Events = (props: IEvents) => {
                     {props.title}
                 </Typography>
                 {error ?? renderError()}
+                {loading && <Loader />}
                 <div className={'flex gap-[16px] mt-[32px] overflow-x-auto max-w-[94%] hideScrollbar'}>
-                    {!loading ? events.map(event =>
+                    {events.map(event =>
                         <EventCard
                             id={event['id']}
                             onClick={()=>{nav.push(`/aboutEvent/${event['id']}`)
@@ -119,7 +120,7 @@ export const Events = (props: IEvents) => {
                                 }
                             })}
 
-                        />) : <Loader/>}
+                        />)}
                 </div>
                 <Typography size={'h2'} font={'semibold'} className={'mt-[64px]'}>
                     Мероприятия
