@@ -7,7 +7,7 @@ import { Typography } from '../Typography';
 interface IBlock {
     className?: string;
     checked?: boolean;
-    name?: string;
+    name: string;
     id?: string;
     onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string;
@@ -23,7 +23,7 @@ export const CheckBlock = ({
                                onChanged,
                                value,
                                disabled,
-                               children
+                               children,
                            }: IBlock) => {
     return <div id={'block-' + id} className={'w-fit flex flex-row gap-2 ' + className}>
         <Checkbox className={className} checked={checked} name={name} id={id} onChanged={onChanged} value={value}

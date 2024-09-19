@@ -49,6 +49,7 @@ const baseErrorResolver = async (error: AxiosError) => {
                     Error: 'Похоже нет body, из-за этого yoga-graphql использует ContentType text/plain'
                 }
             case 400:
+                console.log(error)
                 return {
                     StatusCode: 404,
                     Error: 'Ресурс не найден'

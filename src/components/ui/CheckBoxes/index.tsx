@@ -1,7 +1,10 @@
+import { register } from 'next/dist/client/components/react-dev-overlay/pages/client';
+import { useFormContext } from 'react-hook-form';
+
 interface ICheckbox{
     className?:string;
     checked?:boolean;
-    name?:string;
+    name:string;
     id?:string;
     onChanged?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string;
@@ -17,7 +20,8 @@ export const Checkbox = ({
     value,
     disabled,
 }:ICheckbox) => {
-    return <input id={id} name={name} type="checkbox" value={value} checked={checked} onChange={onChanged}
+    const {register, formState} = useFormContext()
+    return <input id={id} name={name} {...register(name)} type="checkbox" value={value} checked={checked} onChange={onChanged}
     className="w-[20px] h-[20px] border rounded appearance-none flex justify-center content-center cursor-pointer
     default:border-[#EBEBEB] 
     hover:border-[#292929]
@@ -26,5 +30,5 @@ export const Checkbox = ({
     checked:after:content-['✓']
     disabled:bg-[#EBEBEB] disabled:border-[#EBEBEB]
     disabled:after:content-['✓']"
-    disabled={disabled}></input>
+    disabled={disabled} />
 }
