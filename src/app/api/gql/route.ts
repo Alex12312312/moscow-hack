@@ -7,12 +7,14 @@ import { GraphQLFloat, GraphQLInt } from 'graphql';
 import * as https from 'https';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IExecutableSchemaDefinition } from '@graphql-tools/schema';
+import { cookies } from 'next/headers';
 
 const baseParams = (pGetter: any, other: any) => ({
     baseURL: process.env.BASE_API_URL,
     headers: {
         'Authorization': `Bearer ${pGetter('2.req.cookies.access_token')}`,
-        'Origin': process.env.BASE_API_URL
+        'Origin': process.env.BASE_API_URL,
+        'accept': 'application/json'
     },
     httpsAgent,
     ...other,
@@ -30,6 +32,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 const baseErrorResolver = async (error: AxiosError) => {
     if (error.response) {
+        console.log(error.response?.data)
         console.log(error.response.status)
         switch (error.response.status) {
             case 401:
@@ -51,8 +54,8 @@ const baseErrorResolver = async (error: AxiosError) => {
             case 400:
                 console.log(error)
                 return {
-                    StatusCode: 404,
-                    Error: 'Ресурс не найден'
+                    StatusCode: 400,
+                    Error: `BAD REQUEST: ${error.response.data}`
                 }
             case 500:
                 return {
@@ -94,10 +97,19 @@ const resolvers = {
     Mutation: {
         post: async (...params: Record<string, string>[]) => {
             const pGetter = (path: string) => fp.getOr('', path, params)
+            const cookie = cookies()
+            const token = cookie.get('access_token' as any)?.value
 
             return await axios.post(
                 fillParams(pGetter('1.route'), pGetter('1.qs')), pGetter('1.body'),
-                baseParams(pGetter, { params: pGetter('1.qs') }))
+                {
+                    ...baseParams(pGetter, {
+                        params: pGetter('1.qs'),
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                        }
+                    })
+                })
                 .then(response => baseOkResolver(response))
                 .catch(error => baseErrorResolver(error))
         },

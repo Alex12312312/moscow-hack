@@ -5,9 +5,11 @@ import { CalendarIcon, DotIcon, LikeIcon, LocationIcon, TimerIcon } from 'Compon
 import React from 'react';
 import { ITag, Tag } from 'Components/tag';
 import Image from 'next/image';
-import img from 'assets/mockImg.png';
+import TO_FAVORITE from '@/app/lib/apollo/schemas/events/toFavourite.gql'
+import { DocumentNode, useMutation } from '@apollo/client';
 
 interface IEventCard {
+    id?: string
     imageUrl?: string
     title?: string
     subTitle?: string
@@ -21,6 +23,22 @@ interface IEventCard {
 }
 
 export const EventCard = (props: IEventCard) => {
+
+    const [TO_FAVORITE_HANDLE] = useMutation(TO_FAVORITE as DocumentNode, {
+        onCompleted: data => console.log(data),
+        onError: error => console.log(error)
+    })
+    const handleToLike = (id: string) => {
+        TO_FAVORITE_HANDLE({
+            variables: {
+                id: id
+            }
+        }).then(r => {
+            const res = r as {
+                status: number
+            }
+        }).catch(err => err)
+    }
     const renderPhoto = () => {
         if (props.imageUrl != undefined && props.imageUrl.toLowerCase() != 'string') {
             const src = props.imageUrl
@@ -33,7 +51,7 @@ export const EventCard = (props: IEventCard) => {
                     height={'208'}
                 />
                 <div className={'absolute right-0'}>
-                    {<LikeIcon />}
+                    {<LikeIcon onClick={() => handleToLike(props.id!)} />}
                 </div>
                 <div className={'flex gap-[4px] absolute bottom-0 ml-2 mb-2'}>
                     {props.tags?.map((tag, index) => <Tag key={index} color={tag.color} title={tag.title}/>)}
@@ -41,7 +59,7 @@ export const EventCard = (props: IEventCard) => {
             </div>
         } else {
             return <MockedPhotoForEvent
-                likeIcon={<LikeIcon color={'black'}/>}
+                likeIcon={<LikeIcon color={'black'} onClick={() => handleToLike(props.id!)}/>}
                 tags={props.tags}
             />
         }

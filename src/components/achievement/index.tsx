@@ -14,7 +14,7 @@ export function Achievement(props: AchievementProps) {
 
   return (
     <>
-      <div className="flex flex-row p-4 rounded-2xl gap-4 bg-neutral-100 w-full">
+      <div className="flex flex-row p-4 rounded-2xl gap-4 bg-neutral-100 w-[94%]">
         <div className="h-20 w-20 bg-white rounded-xl justify-center items-center select-none flex">
           <LikeIcon color="black" />
         </div>
