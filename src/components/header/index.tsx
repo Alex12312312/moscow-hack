@@ -54,10 +54,10 @@ export const Header = () => {
   return (
     <div
       className={
-        'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[7%]'
+        'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[2%] w-full'
       }
     >
-      <div className={'flex'}>
+      <div className={'flex w-full'}>
         <div
           className={'flex gap-[8px] cursor-pointer'}
           onClick={() => push('/')}
