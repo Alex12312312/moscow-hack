@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { ITypography, Typography } from 'Components/ui/Typography';
 import {
   CalendarLiteIcon,
@@ -15,6 +15,8 @@ interface ISlide {
 }
 
 export const Slide = (props: ISlide) => {
+  const [hidden, setHidden] = useState(false);
+
   return (
     <div className={'flex ml-[6.25%]'}>
       <div className={'w-[15.6%] flex flex-col justify-between'}>
@@ -83,6 +85,7 @@ export const Slide = (props: ISlide) => {
             className={
               'bg-neutral-100 p-4 flex-col flex rounded-2xl mt-[356px]'
             }
+            //style={{ display: hidden ? 'none' : 'inherit' }}
           >
             <div className={'flex justify-between align-middle'}>
               <Typography
@@ -92,7 +95,9 @@ export const Slide = (props: ISlide) => {
               >
                 Вы организатор?
               </Typography>
-              <CloseIcon />
+              <div className={'cursor-pointer'} onClick={() => setHidden(true)}>
+                <CloseIcon />
+              </div>
             </div>
             <Button
               className={'mt-[16px]'}

@@ -180,7 +180,7 @@ export const Events = (props: IEvents) => {
             }
           >
             {events.map((event, index) =>
-              index > 2 ? (
+              index < 3 ? (
                 <EventCard
                   id={event['id']}
                   onClick={() => {
