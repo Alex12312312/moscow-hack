@@ -67,7 +67,7 @@ export const Header = () => {
             size={'h3'}
             color={'text-dark-600'}
             font={'bold'}
-            className={'flex'}
+            className={'flex w-12 '}
           >
             Береги афиша
           </Typography>
