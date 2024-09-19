@@ -38,7 +38,7 @@ export const HeaderIcons = (props: IHeaderIcons) => {
 }
 export const Header = () => {
     const fm = useForm()
-    const {push} = useRouter()
+    const { push } = useRouter()
     return <div className={'flex flex-col justify-center pt-[36px] pb-[36px] pl-[7%] pr-[7%]'}>
         <div className={'flex'}>
             <div className={'flex gap-[8px]'} onClick={() => push('/')}>

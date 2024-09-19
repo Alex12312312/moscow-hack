@@ -67,7 +67,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
                                     description: string
                                 }).description}</Typography>
                             </div>
-                            <Reports id={params.id}/>
+                            {/*<Reports id={params.id}/>*/}
 
                             <div className="h-[404px] w-[752px] ">
                                 <img src="https://www.ayda.ru/images/cities/perm/maps/perm-tourist-map.gif"
@@ -84,78 +84,75 @@ export default function EventPage({ params }: { params: { id: string } }) {
         </div>
     </div>
 }
-
-interface IReport {
-    id: string
-}
-
-export const Reports = (props: IReport) => {
-    const [reports, setReport] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setErr] = useState(false)
-
-    const err = () => {
-        return <Typography size={'base1'} font={'medium'} color={'text-error-200'}>
-            Произошла ошибка
-        </Typography>
-    }
-
-    useQuery(GetComments as DocumentNode, {
-        variables: {
-            id: props.id,
-        },
-        onCompleted: data => {
-            if (data['get']['StatusCode'] !== 200) {
-                setErr(true)
-            }
-
-            const reports = data['get']['Response'] as Array<{
-                id: string,
-                content: string,
-                rating: 5,
-                userId: string,
-                createdDate: string
-            }>
-
-            if (reports.length > 0) {
-                setReport([{
-                    ...(reports[0]),
-                    name: 'Иванов Иван Иванович',
-                }])
-            }
-        },
-        onError: error => console.log(error)
-    });
-    return <>
-         {loading && <Loader/>}
-         {error && err()}
-    </>
-    //     <div className={'flex flex-col gap-[24px]'}>
-    //         <Typography size={'h2'} className={'mt-[48px]'}>Отзывы</Typography>
-    //         {(reports as Array<{
-    //             id: string,
-    //             content: string,
-    //             rating: 5,
-    //             userId: string,
-    //             createdDate: string,
-    //             name: string
-    //         }>).map(report => <div className={'flex flex-col'} key={report.id}>
-    //             <div className={'flex gap-[16px]'}>
-    //                 <MockAvatar onClick={() => {
-    //                 }}/>
-    //                 <div className={'flex flex-col justify-between'}>
-    //                     <Typography font={'medium'} size={'base3'}>
-    //                         {report.name}
-    //                     </Typography>
-    //                     <Typography size={'base4'} font={'regular'}>
-    //                         {report.createdDate}
-    //                     </Typography>
-    //                 </div>
-    //             </div>
-    //             <Typography className={} size={'base3'} font={'regular'}>
-    //                 {report.content}
-    //             </Typography>
-    //         </div>)}
-    //     </div>
-    // </>
-}
+//
+// interface IReport {
+//     id: string
+// }
+//
+// export const Reports = (props: IReport) => {
+//     const [reports, setReport] = useState([])
+//     const [loading, setLoading] = useState(true)
+//     const [error, setErr] = useState(false)
+//
+//     const err = () => {
+//         return <Typography size={'base1'} font={'medium'} color={'text-error-200'}>
+//             Произошла ошибка
+//         </Typography>
+//     }
+//
+//     useQuery(GetComments as DocumentNode, {
+//         variables: {
+//             id: props.id,
+//         },
+//         onCompleted: data => {
+//             if (data['get']['StatusCode'] !== 200) {
+//                 setErr(true)
+//             }
+//
+//             const reports = data['get']['Response'] as Array<{
+//                 id: string,
+//                 content: string,
+//                 rating: 5,
+//                 userId: string,
+//                 createdDate: string
+//             }>
+//
+//             if (reports.length > 0) {
+//                 setReport([{
+//                     ...(reports[0]),
+//                     name: 'Иванов Иван Иванович',
+//                 }])
+//             }
+//         },
+//         onError: error => console.log(error)
+//     });
+//     return <>
+//         <div className={'flex flex-col gap-[24px]'}>
+//             <Typography size={'h2'} className={'mt-[48px]'}>Отзывы</Typography>
+//             {(reports as Array<{
+//                 id: string,
+//                 content: string,
+//                 rating: 5,
+//                 userId: string,
+//                 createdDate: string,
+//                 name: string
+//             }>).map(report => <div id={report.id} className={'flex flex-col'} key={report.id}>
+//                 <div className={'flex gap-[16px]'}>
+//                     <MockAvatar onClick={() => {
+//                     }}/>
+//                     <div className={'flex flex-col justify-between'}>
+//                         <Typography font={'medium'} size={'base3'}>
+//                             {report.name}
+//                         </Typography>
+//                         <Typography size={'base4'} font={'regular'}>
+//                             {report.createdDate}
+//                         </Typography>
+//                     </div>
+//                 </div>
+//                 <Typography className={} size={'base3'} font={'regular'}>
+//                     {report.content}
+//                 </Typography>
+//             </div>)}
+//         </div>
+//     </>
+// }
